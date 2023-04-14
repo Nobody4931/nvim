@@ -72,6 +72,27 @@ return {
 
 		config = function(_plugin, opts)
 			require("nvim-tree").setup(opts)
+
+			-- Close the window if nvim-tree is the last remaining window in the tab
+			-- Close vim if nvim-tree is the last remaining window in the entire runtime
+			vim.api.nvim_create_autocmd("WinClosed", {
+				group = vim.api.nvim_create_augroup("auto_close_nvim_tree", { clear = true }),
+				callback = function()
+					local winnr = tonumber(vim.fn.expand("<amatch>"))
+					vim.schedule(function()
+						local utils = require("nvim-tree.utils")
+						local tab_wins = vim.tbl_filter(function(w) return w ~= winnr end, vim.api.nvim_tabpage_list_wins(0))
+						local tab_bufs = vim.tbl_map(vim.api.nvim_win_get_buf, tab_wins)
+						if #tab_bufs == 1 and utils.is_nvim_tree_buf(tab_bufs[1]) then
+							if #vim.api.nvim_list_wins() == 1 then
+								vim.cmd.quit()
+							else
+								vim.api.nvim_win_close(tab_wins[1], true)
+							end
+						end
+					end)
+				end
+			})
 		end
 	},
 }
