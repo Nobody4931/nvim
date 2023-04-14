@@ -45,7 +45,7 @@ return {
 			cmd = vim.opt.shell:get(),
 			auto_close = false,
 
-			hl = "Normal",
+			hl = "FTermNormal",
 			blend = 0,
 
 			border = "rounded",

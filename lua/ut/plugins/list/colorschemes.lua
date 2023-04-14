@@ -29,6 +29,9 @@ return {
 
 				highlights.TelescopeNormal = vim.tbl_extend("keep", bg_trans, highlights.TelescopeNormal or {})
 				highlights.TelescopeBorder = vim.tbl_extend("keep", bg_trans, highlights.TelescopeBorder or {})
+
+				highlights.FTermNormal = vim.tbl_extend("keep", bg_trans, highlights.NormalFloat or {})
+				highlights.FloatBorder = vim.tbl_extend("keep", bg_trans, highlights.FloatBorder or {})
 			end
 		},
 
@@ -80,6 +83,9 @@ return {
 				return {
 					TelescopeNormal = bg_dark,
 					TelescopeBorder = bg_dark,
+
+					FTermNormal = bg_dark,
+					FloatBorder = bg_dark,
 				}
 			end,
 
