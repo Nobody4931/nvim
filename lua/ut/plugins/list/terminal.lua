@@ -74,5 +74,5 @@ return {
 
 			state.others["g"] = fterm:new(vim.tbl_extend("keep", { cmd = "lazygit", auto_close = true }, opts))
 		end
-	}
+	},
 }
