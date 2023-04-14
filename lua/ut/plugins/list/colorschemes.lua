@@ -34,6 +34,7 @@ return {
 
 		init = function()
 			if colors.colorscheme == "tokyonight" then
+				vim.opt.termguicolors = true
 				vim.cmd.colorscheme(colors.colorscheme)
 			end
 		end,
@@ -89,6 +90,7 @@ return {
 
 		init = function()
 			if colors.colorscheme == "catppuccin" then
+				vim.opt.termguicolors = true
 				vim.cmd.colorscheme(colors.colorscheme)
 			end
 		end,
