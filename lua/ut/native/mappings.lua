@@ -7,6 +7,9 @@ map("t", "<C-q>", "<C-\\><C-n>") -- Ctrl+Q in terminal mode
 -- Alternate file alternative
 map("n", "gb", "<C-^>")
 
+-- CD into directory of current file
+map("n", "gcd", "<CMD>cd %:h<CR>")
+
 -- Send numeric up/down movements to jumplist
 map("n", "j", [[(v:count > 0 ? "m'" . v:count : '') . 'j']], { expr = true })
 map("n", "k", [[(v:count > 0 ? "m'" . v:count : '') . 'k']], { expr = true })
