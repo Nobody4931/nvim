@@ -2,6 +2,8 @@ return {
 	{
 		"williamboman/mason.nvim",
 
+		cmd = "Mason",
+
 		opts = {
 			install_root_dir = vim.fn.stdpath("data") .. "/mason",
 			max_concurrent_installers = 2,
