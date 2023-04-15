@@ -24,7 +24,8 @@ return {
 			dim_inactive = false,
 			lualine_bold = true,
 
-			on_highlights = function(highlights, colors)
+			---@diagnostic disable-next-line: unused-local
+			on_highlights = function(highlights, _color)
 				local bg_trans = { bg = "NONE" }
 
 				highlights.TelescopeNormal = vim.tbl_extend("keep", bg_trans, highlights.TelescopeNormal or {})
@@ -42,6 +43,7 @@ return {
 			end
 		end,
 
+		---@diagnostic disable-next-line: unused-local
 		config = function(_plugins, opts)
 			require("tokyonight").setup(opts)
 		end
@@ -77,8 +79,8 @@ return {
 			},
 
 			color_overrides = {},
-			custom_highlights = function(colors)
-				local bg_dark = { bg = colors.mantle }
+			custom_highlights = function(color)
+				local bg_dark = { bg = color.mantle }
 
 				return {
 					TelescopeNormal = bg_dark,
@@ -101,6 +103,7 @@ return {
 			end
 		end,
 
+		---@diagnostic disable-next-line: unused-local
 		config = function(_plugin, opts)
 			require("catppuccin").setup(opts)
 		end

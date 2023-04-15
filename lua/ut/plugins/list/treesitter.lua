@@ -176,6 +176,7 @@ return {
 			},
 		},
 
+		---@diagnostic disable-next-line: unused-local
 		config = function(_plugin, opts)
 			-- Folding module
 			vim.opt.foldmethod = "expr"

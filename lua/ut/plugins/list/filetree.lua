@@ -70,6 +70,7 @@ return {
 			},
 		},
 
+		---@diagnostic disable-next-line: unused-local
 		config = function(_plugin, opts)
 			require("nvim-tree").setup(opts)
 

@@ -19,6 +19,7 @@ return {
 			},
 		},
 
+		---@diagnostic disable-next-line: unused-local
 		config = function(_plugin, opts)
 			require("mason").setup(opts)
 		end
@@ -65,6 +66,7 @@ return {
 			},
 		},
 
+		---@diagnostic disable-next-line: unused-local
 		config = function(_plugin, opts)
 			-- Diagnostic configuration
 			vim.diagnostic.config(opts.diagnostic)

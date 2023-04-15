@@ -106,6 +106,7 @@ return {
 			}
 		end,
 
+		---@diagnostic disable-next-line: unused-local
 		config = function(_plugin, opts)
 			vim.opt.completeopt = { "menu", "menuone", "noselect" }
 			vim.opt.pumheight = 25

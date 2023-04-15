@@ -41,6 +41,7 @@ return {
 			},
 		},
 
+		---@diagnostic disable-next-line: unused-local
 		config = function(_plugin, opts)
 			require("Comment").setup(opts)
 		end
@@ -64,6 +65,7 @@ return {
 			}
 		},
 
+		---@diagnostic disable-next-line: unused-local
 		config = function(_plugin, opts)
 			require("mini.align").setup(opts)
 		end
@@ -96,6 +98,7 @@ return {
 			}
 		},
 
+		---@diagnostic disable-next-line: unused-local
 		config = function(_plugin, opts)
 			require("mini.move").setup(opts)
 		end
@@ -134,6 +137,7 @@ return {
 			n_lines = 50,
 		},
 
+		---@diagnostic disable-next-line: unused-local
 		config = function(_plugin, opts)
 			require("mini.surround").setup(opts)
 		end

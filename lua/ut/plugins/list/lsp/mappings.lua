@@ -1,12 +1,13 @@
 local M = {}
 
+---@diagnostic disable-next-line: unused-local
 function M.on_attach(_client, bufnr)
 	local map = vim.keymap.set
 	local map_opt = { silent = true, buffer = bufnr }
 
 	local function diagnostic_goto_wrap(forwards, severity)
 		local goto_fn = forwards and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
-		local severity = severity and vim.diagnostic.severity[severity]
+		severity = severity and vim.diagnostic.severity[severity]
 		return function()
 			goto_fn({ severity = severity })
 		end

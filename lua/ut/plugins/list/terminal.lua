@@ -4,6 +4,7 @@ return {
 	{
 		"numToStr/FTerm.nvim",
 
+		---@diagnostic disable-next-line: unused-local
 		keys = function(_plugin)
 			local function terminal_toggle(n)
 				state.last = n
@@ -57,6 +58,7 @@ return {
 			},
 		},
 
+		---@diagnostic disable-next-line: unused-local
 		config = function(_plugin, opts)
 			local fterm = require("FTerm")
 
