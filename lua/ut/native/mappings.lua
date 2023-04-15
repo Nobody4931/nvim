@@ -58,3 +58,9 @@ map("i", "<M-h>", "<C-o>I")
 map("i", "<M-j>", "<C-o>o")
 map("i", "<M-k>", "<C-o>O")
 map("i", "<M-l>", "<C-o>A")
+
+-- Windows specific mappings
+if require("ut.util.env").get_os() == "Windows_NT" then
+	-- Disable man lookup
+	map("n", "K", "<NOP>")
+end
