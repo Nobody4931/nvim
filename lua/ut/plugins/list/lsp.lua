@@ -95,6 +95,7 @@ return {
 			mason_lspconfig.setup_handlers({
 				function(server)
 					local server_opts = opts.servers[server]
+					server_opts.root_dir = vim.loop.cwd
 					server_opts.on_attach = on_attach
 					server_opts.capabilities = capabilities
 
