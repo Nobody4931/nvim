@@ -15,6 +15,7 @@ return {
 			{ "<leader>sg", function() require("telescope.builtin").grep_string({ search = vim.fn.input("Find Word: ") }) end },
 			{ "<leader>sG", function() require("telescope.builtin").live_grep() end },
 			{ "<leader>sh", function() require("telescope.builtin").help_tags() end },
+			{ "<leader>sm", function() require("telescope.builtin").man_pages() end },
 			{ "<leader>so", function() require("telescope.builtin").oldfiles() end },
 			{ "<leader>sv", function() require("telescope.builtin").find_files({ prompt_title = "Vim Files", cwd = vim.fn.stdpath("config") }) end },
 		},
