@@ -64,6 +64,7 @@ return {
 						["ie"] = "@parameter.inner",
 						["ae"] = "@parameter.outer",
 
+						["im"] = "@comment.outer",
 						["am"] = "@comment.outer",
 					},
 
