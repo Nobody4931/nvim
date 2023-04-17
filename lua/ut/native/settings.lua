@@ -57,18 +57,6 @@ o.hlsearch = false
 
 o.matchpairs:append("<:>")
 
--- Windows specific settings
-if env.get_os() == "Windows_NT" then
-	o.shell = vim.fn.shellescape(vim.fs.normalize("$ProgramW6432/Git/bin/bash.exe"))
-	o.shellslash = true
-	-- thanks vim for not automatically setting half of these!
-	o.shellcmdflag = "-c"
-	o.shellpipe = "2>&1| tee"
-	o.shellredir = ">%s 2>&1"
-	o.shellquote = ""
-	o.shellxquote = ""
-end
-
 -- GUI Neovim specific settings
 if env.is_gui_nvim() then
 	o.guifont = "ProggyVector NF:h11:#e-subpixelantialias"
