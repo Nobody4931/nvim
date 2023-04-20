@@ -57,6 +57,9 @@ return {
 			},
 
 			actions = {
+				change_dir = {
+					global = true,
+				},
 				file_popup = {
 					open_win_config = {
 						border = "none",
