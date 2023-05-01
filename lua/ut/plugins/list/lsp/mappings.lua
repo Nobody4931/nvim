@@ -15,6 +15,7 @@ function M.on_attach(_client, bufnr)
 
 	-- Hover mappings
 	map("n", "K", vim.lsp.buf.hover, map_opt)
+	map("n", "<leader>K", vim.lsp.buf.signature_help, map_opt)
 
 	-- Goto symbols mappings
 	map("n", "<leader>lr", function() require("telescope.builtin").lsp_references(require("telescope.themes").get_dropdown()) end, map_opt)
