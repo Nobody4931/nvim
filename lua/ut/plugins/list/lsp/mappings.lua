@@ -32,13 +32,13 @@ function M.on_attach(_client, bufnr)
 	map("n", "<leader>lC", vim.lsp.buf.code_action,   map_opt)
 
 	-- Goto diagnostics mappings
-	map("n", "<leader>xx", function() require("telescope.builtin").diagnostics() end, map_opt)
-	map("n", "<leader>xd", diagnostic_goto_wrap(true),           map_opt)
-	map("n", "<leader>xD", diagnostic_goto_wrap(false),          map_opt)
-	map("n", "<leader>xe", diagnostic_goto_wrap(true,  "ERROR"), map_opt)
-	map("n", "<leader>xE", diagnostic_goto_wrap(false, "ERROR"), map_opt)
-	map("n", "<leader>xw", diagnostic_goto_wrap(true,  "WARN"),  map_opt)
-	map("n", "<leader>xW", diagnostic_goto_wrap(false, "WARN"),  map_opt)
+	map("n", "<leader>lx", function() require("telescope.builtin").diagnostics() end, map_opt)
+	map("n", "]d", diagnostic_goto_wrap(true),           map_opt)
+	map("n", "[d", diagnostic_goto_wrap(false),          map_opt)
+	map("n", "]r", diagnostic_goto_wrap(true,  "ERROR"), map_opt)
+	map("n", "[r", diagnostic_goto_wrap(false, "ERROR"), map_opt)
+	map("n", "]w", diagnostic_goto_wrap(true,  "WARN"),  map_opt)
+	map("n", "[w", diagnostic_goto_wrap(false, "WARN"),  map_opt)
 end
 
 return M

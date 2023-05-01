@@ -98,63 +98,87 @@ return {
 					set_jumps = true,
 
 					goto_next_start = {
-						["<M-b>"] = "@block.outer",
+						["]B"] = "@block.inner",
+						["]b"] = "@block.outer",
 
-						["<M-c>"] = "@class.outer",
-						["<M-f>"] = "@function.outer",
+						["]C"] = "@class.inner",
+						["]c"] = "@class.outer",
+						["]F"] = "@function.inner",
+						["]f"] = "@function.outer",
 
-						["<M-n>"] = "@conditional.outer",
-						["<M-l>"] = "@loop.outer",
+						["]N"] = "@conditional.inner",
+						["]n"] = "@conditional.outer",
+						["]L"] = "@loop.inner",
+						["]l"] = "@loop.outer",
 
-						["<M-x>"] = "@call.outer",
-						["<M-e>"] = "@parameter.outer",
+						["]X"] = "@call.inner",
+						["]x"] = "@call.outer",
+						["]e"] = "@parameter.inner",
 
-						["<M-m>"] = "@comment.outer",
+						["]m"] = "@comment.outer",
 					},
 
 					goto_next_end = {
-						["g<M-b>"] = "@block.outer",
+						["g]B"] = "@block.inner",
+						["g]b"] = "@block.outer",
 
-						["g<M-c>"] = "@class.outer",
-						["g<M-f>"] = "@function.outer",
+						["g]C"] = "@class.inner",
+						["g]c"] = "@class.outer",
+						["g]F"] = "@function.inner",
+						["g]f"] = "@function.outer",
 
-						["g<M-n>"] = "@conditional.outer",
-						["g<M-l>"] = "@loop.outer",
+						["g]N"] = "@conditional.inner",
+						["g]n"] = "@conditional.outer",
+						["g]L"] = "@loop.inner",
+						["g]l"] = "@loop.outer",
 
-						["g<M-x>"] = "@call.outer",
-						["g<M-e>"] = "@parameter.outer",
+						["g]X"] = "@call.inner",
+						["g]x"] = "@call.outer",
+						["g]e"] = "@parameter.inner",
 
-						["g<M-m>"] = "@comment.outer",
+						["g]m"] = "@comment.outer",
 					},
 
 					goto_previous_start = {
-						["<M-S-b>"] = "@block.outer",
+						["[B"] = "@block.inner",
+						["[b"] = "@block.outer",
 
-						["<M-S-c>"] = "@class.outer",
-						["<M-S-f>"] = "@function.outer",
+						["[C"] = "@class.inner",
+						["[c"] = "@class.outer",
+						["[F"] = "@function.inner",
+						["[f"] = "@function.outer",
 
-						["<M-S-n>"] = "@conditional.outer",
-						["<M-S-l>"] = "@loop.outer",
+						["[N"] = "@conditional.inner",
+						["[n"] = "@conditional.outer",
+						["[L"] = "@loop.inner",
+						["[l"] = "@loop.outer",
 
-						["<M-S-x>"] = "@call.outer",
-						["<M-S-e>"] = "@parameter.outer",
+						["[X"] = "@call.inner",
+						["[x"] = "@call.outer",
+						["[e"] = "@parameter.inner",
 
-						["<M-S-m>"] = "@comment.outer",
+						["[m"] = "@comment.outer",
 					},
 
 					goto_previous_end = {
-						["g<M-S-b>"] = "@block.outer",
+						["g[B"] = "@block.inner",
+						["g[b"] = "@block.outer",
 
-						["g<M-S-c>"] = "@class.outer",
-						["g<M-S-f>"] = "@function.outer",
+						["g[C"] = "@class.inner",
+						["g[c"] = "@class.outer",
+						["g[F"] = "@function.inner",
+						["g[f"] = "@function.outer",
 
-						["g<M-S-n>"] = "@conditional.outer",
-						["g<M-S-l>"] = "@loop.outer",
+						["g[N"] = "@conditional.inner",
+						["g[n"] = "@conditional.outer",
+						["g[L"] = "@loop.inner",
+						["g[l"] = "@loop.outer",
 
-						["g<M-S-x>"] = "@call.outer",
-						["g<M-S-e>"] = "@parameter.outer",
+						["g[X"] = "@call.inner",
+						["g[x"] = "@call.outer",
+						["g[e"] = "@parameter.inner",
 
-						["g<M-S-m>"] = "@comment.outer",
+						["g[m"] = "@comment.outer",
 					},
 				},
 
