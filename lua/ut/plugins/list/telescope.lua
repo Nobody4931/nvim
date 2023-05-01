@@ -42,7 +42,7 @@ return {
 		},
 
 		---@diagnostic disable-next-line: unused-local
-		config = function(_plugins, opts)
+		config = function(_plugin, opts)
 			local telescope = require("telescope")
 			local actions = require("telescope.actions")
 

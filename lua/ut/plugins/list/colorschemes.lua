@@ -44,7 +44,7 @@ return {
 		end,
 
 		---@diagnostic disable-next-line: unused-local
-		config = function(_plugins, opts)
+		config = function(_plugin, opts)
 			require("tokyonight").setup(opts)
 		end
 	},
