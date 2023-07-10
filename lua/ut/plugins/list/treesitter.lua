@@ -206,6 +206,7 @@ return {
 			-- Folding module
 			vim.opt.foldmethod = "expr"
 			vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+			vim.opt.foldlevel = 999
 			vim.opt.foldenable = false
 
 			-- Setup nvim-treesitter
