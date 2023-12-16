@@ -1,5 +1,3 @@
-local colors = require("ut.util.colors")
-
 local readme_path = vim.fn.stdpath("state") .. "/lazy/readme"
 local state_path = vim.fn.stdpath("state") .. "/lazy/state.json"
 local lock_path = vim.fn.stdpath("config") .. "/lazy_lock.json"
@@ -20,14 +18,9 @@ lazy.setup("ut.plugins.list", {
 	root = root_path,
 	state = state_path,
 	lockfile = lock_path,
-	defaults = {
-		lazy = true,
-		version = nil,
-	},
-	concurrency = 10,
 	install = {
 		missing = true,
-		colorscheme = { colors.colorscheme, "habamax" },
+		colorscheme = { "catppuccin", "habamax" },
 	},
 	ui = {
 		border = "none",
@@ -35,7 +28,6 @@ lazy.setup("ut.plugins.list", {
 			width = 0.8,
 			height = 0.8,
 		},
-		wrap = true,
 		icons = {
 			cmd = "",
 			config = "",
@@ -68,7 +60,8 @@ lazy.setup("ut.plugins.list", {
 		enabled = false,
 	},
 	change_detection = {
-		enabled = false,
+		enabled = true,
+		notify = true,
 	},
 	performance = {
 		cache = {
@@ -87,8 +80,8 @@ lazy.setup("ut.plugins.list", {
 				"getscriptPlugin",
 				"vimball",
 				"vimballPlugin",
-				"matchit",
-				"matchparen",
+				-- "matchit",
+				-- "matchparen",
 				"2html_plugin",
 				"logiPat",
 				"rrhelper",
