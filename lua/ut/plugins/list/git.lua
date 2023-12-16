@@ -75,7 +75,7 @@ return {
 			{ "<leader>ghu", function() require("gitsigns").undo_stage_hunk() end },
 
 			{ "<leader>ghd", function() require("gitsigns").diffthis() end },
-			{ "<leader>ghd", function() require("gitsigns").diffthis("~") end },
+			{ "<leader>ghD", function() require("gitsigns").diffthis("~") end },
 			{ "<leader>gtd", function() require("gitsigns").toggle_deleted() end },
 		},
 
