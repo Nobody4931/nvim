@@ -1,4 +1,5 @@
 return {
+	-- Git interface inspired by Magit
 	{
 		"NeogitOrg/neogit",
 
@@ -57,6 +58,7 @@ return {
 		end,
 	},
 
+	-- Shows changes since the last commit in the signcolumn
 	{
 		"lewis6991/gitsigns.nvim",
 
