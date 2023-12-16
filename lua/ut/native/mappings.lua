@@ -22,14 +22,11 @@ map({"n", "v"}, "<leader>Y", "\"+Y")
 
 -- Paste from system register
 map({"n", "v"}, "<leader>p", "\"+p")
-map("n", "<leader>P", "\"+P")
+map({"n", "v"}, "<leader>P", "\"+P")
 
 -- Delete without replacing register contents
 map({"n", "v"}, "<leader>d", "\"_d")
 map({"n", "v"}, "<leader>D", "\"_D")
-
--- Paste without replacing register contents
-map("v", "<leader>P", "\"_dP")
 
 -- Center cursor while navigating
 map("n", "<C-u>", "<C-u>zz")
