@@ -17,6 +17,11 @@ return {
 
 			custom_highlights = function(colors)
 				return {
+					-- Make telescope's floating window transparent
+					TelescopeNormal = { bg = colors.none, fg = colors.text },
+					TelescopeBorder = { bg = colors.none },
+					TelescopeTitle = { bg = colors.none },
+
 					-- Make floating windows opaque
 					NormalFloat = { bg = colors.base },
 					FloatBorder = { bg = colors.base },
