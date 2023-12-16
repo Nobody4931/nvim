@@ -19,8 +19,8 @@ return {
 				return {
 					-- Make telescope's floating window transparent
 					TelescopeNormal = { bg = colors.none, fg = colors.text },
-					TelescopeBorder = { bg = colors.none },
-					TelescopeTitle = { bg = colors.none },
+					TelescopeBorder = { bg = colors.none, fg = colors.blue },
+					TelescopeTitle = { bg = colors.none, fg = colors.blue },
 
 					-- Make floating windows opaque
 					NormalFloat = { bg = colors.base },
