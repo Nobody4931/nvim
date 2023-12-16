@@ -1,7 +1,4 @@
 return {
-	-- Icon provider dependency
-	{ "nvim-tree/nvim-web-devicons" },
-
 	-- Better vim.notify()
 	{
 		"rcarriga/nvim-notify",
