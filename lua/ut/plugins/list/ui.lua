@@ -105,6 +105,7 @@ return {
 				inactive_winbar = {},
 
 				extensions = {
+					-- TODO: Come back to this later after adding more plugins
 					"quickfix",
 					"man",
 					"lazy",
