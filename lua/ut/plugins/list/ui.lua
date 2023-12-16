@@ -46,7 +46,6 @@ return {
 			"nvim-tree/nvim-web-devicons",
 		},
 
-		lazy = true,
 		event = "VeryLazy",
 
 		opts = function()
@@ -128,7 +127,6 @@ return {
 	{
 		"lukas-reineke/indent-blankline.nvim", main = "ibl",
 
-		lazy = true,
 		event = "BufReadPost",
 
 		opts = {

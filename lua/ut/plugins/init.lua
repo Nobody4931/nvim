@@ -18,6 +18,9 @@ lazy.setup("ut.plugins.list", {
 	root = root_path,
 	state = state_path,
 	lockfile = lock_path,
+	defaults = {
+		lazy = true,
+	},
 	install = {
 		missing = true,
 		colorscheme = { "catppuccin", "habamax" },

@@ -2,8 +2,6 @@ return {
 	{
 		"catppuccin/nvim", name = "catppuccin.nvim",
 
-		lazy = true,
-
 		opts = {
 			flavour = "mocha",
 			transparent_background = true,
