@@ -10,8 +10,8 @@ return {
 
 		cmd = "Telescope",
 		keys = {
-			{ "<leader>sf", function() require("telescope.builtin").find_files({ no_ignore = false }) end },
-			{ "<leader>sF", function() require("telescope.builtin").find_files({ no_ignore = true  }) end },
+			{ "<leader>sf", function() require("telescope.builtin").find_files({ hidden = true, no_ignore = false }) end },
+			{ "<leader>sF", function() require("telescope.builtin").find_files({ hidden = true, no_ignore = true  }) end },
 			{ "<leader>sg", function() require("telescope.builtin").grep_string({ search = vim.fn.input("Find Word: ") }) end },
 			{ "<leader>sG", function() require("telescope.builtin").live_grep() end },
 			{ "<leader>sh", function() require("telescope.builtin").help_tags() end },
