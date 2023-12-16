@@ -22,10 +22,10 @@ return {
 			stages = "fade",
 			background_colour = "#000000", -- Just to shut up the transparent background color warning
 			max_height = function()
-				return math.floor(vim.o.lines * 0.75)
+				return math.floor(vim.o.lines * 0.5)
 			end,
 			max_width = function()
-				return math.floor(vim.o.columns * 0.75)
+				return math.floor(vim.o.columns * 0.5)
 			end,
 			on_open = function(window)
 				vim.api.nvim_win_set_config(window, { zindex = 150 }) -- Ensure topmost
