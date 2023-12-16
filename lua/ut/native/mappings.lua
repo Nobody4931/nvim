@@ -54,3 +54,10 @@ map("i", "<M-h>", "<C-o>I")
 map("i", "<M-j>", "<C-o>o")
 map("i", "<M-k>", "<C-o>O")
 map("i", "<M-l>", "<C-o>A")
+
+-- Toggle word wrap
+map("n", "<leader>cw", function()
+	vim.opt.wrap = not vim.opt.wrap:get()
+end)
+
+vim.opt.wrap = false

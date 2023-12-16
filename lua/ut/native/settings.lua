@@ -49,5 +49,4 @@ opt.hlsearch = false -- don't highlight search results
 
 opt.matchpairs:append("<:>") -- TODO: Find somewhere to put this?
 
--- TODO: Make a mapping for setting 'wordwrap'
 -- TODO: Make an autocmd for setting 'conceallevel' on 'help' files
