@@ -56,4 +56,40 @@ return {
 			require("neogit").setup(opts)
 		end,
 	},
+
+	{
+		"lewis6991/gitsigns.nvim",
+
+		event = "BufReadPost",
+		keys = {
+			{ "]h", function() require("gitsigns").next_hunk() end },
+			{ "[h", function() require("gitsigns").prev_hunk() end },
+
+			{ "ih", ":<C-u>Gitsigns select_hunk<CR>", mode = {"o", "x"} },
+
+			{ "<leader>ghs", ":Gitsigns stage_hunk<CR>", mode = {"n", "v"} },
+			{ "<leader>ghr", ":Gitsigns reset_hunk<CR>", mode = {"n", "v"} },
+			{ "<leader>ghS", function() require("gitsigns").stage_buffer() end },
+			{ "<leader>ghR", function() require("gitsigns").reset_buffer() end },
+
+			{ "<leader>ghu", function() require("gitsigns").undo_stage_hunk() end },
+
+			{ "<leader>ghd", function() require("gitsigns").diffthis() end },
+			{ "<leader>ghd", function() require("gitsigns").diffthis("~") end },
+			{ "<leader>gtd", function() require("gitsigns").toggle_deleted() end },
+		},
+
+		opts = {
+			signcolumn = true,
+			numhl = false,
+			linehl = false,
+			current_line_blame = true,
+		},
+
+		config = function(_, opts)
+			vim.opt.signcolumn = "yes"
+
+			require("gitsigns").setup(opts)
+		end,
+	},
 }

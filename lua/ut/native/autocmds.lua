@@ -5,7 +5,6 @@ local augroup_opts = { clear = true }
 -- Toggle relative numbers when entering/leaving insert mode
 local number_toggle = augroup("number_toggle", augroup_opts)
 
-vim.opt.signcolumn = "no"
 vim.opt.number = true
 vim.opt.relativenumber = true
 
