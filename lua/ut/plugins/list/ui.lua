@@ -115,6 +115,7 @@ return {
 
 		config = function(_, opts)
 			vim.opt.laststatus = 2 -- always show statusline
+			vim.opt.showtabline = 0 -- never show tabline
 			vim.opt.showmode = false -- don't show mode at the bottom
 			vim.opt.showcmd = true -- show pending command at the bottom
 			vim.opt.cmdheight = 1
