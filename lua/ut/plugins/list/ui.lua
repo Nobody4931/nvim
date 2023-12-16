@@ -141,4 +141,24 @@ return {
 			require("ibl").setup(opts)
 		end,
 	},
+
+	-- Highlights other occurrences the word under the cursor
+	{
+		"RRethy/vim-illuminate",
+
+		event = "BufReadPost",
+		keys = {
+			{ "[[", function() require("illuminate").goto_prev_reference() end },
+			{ "]]", function() require("illuminate").goto_next_reference() end },
+		},
+
+		opts = {
+			delay = 100,
+			large_file_cutoff = 1000,
+		},
+
+		config = function(_, opts)
+			require("illuminate").configure(opts)
+		end,
+	},
 }

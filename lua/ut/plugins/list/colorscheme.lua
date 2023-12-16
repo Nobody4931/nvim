@@ -47,7 +47,7 @@ return {
 				},
 				illuminate = {
 					enabled = true,
-					lsp = true,
+					lsp = false,
 				},
 			},
 		},
