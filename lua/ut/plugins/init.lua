@@ -107,6 +107,6 @@ vim.api.nvim_create_autocmd("User", {
 	group = vim.api.nvim_create_augroup("display_startuptime", { clear = true }),
 	callback = vim.schedule_wrap(function()
 		local stats = lazy.stats()
-		print(string.format("Neovim loaded with %d plugins in %.2fms", stats.count, stats.startuptime))
+		vim.notify(string.format("Loaded with %d plugins in %.2fms", stats.count, stats.startuptime), vim.log.levels.INFO, { title = "Neovim" })
 	end)
 })
