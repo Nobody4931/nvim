@@ -17,8 +17,12 @@ return {
 			no_bold = false,
 			no_underline = false,
 
-			color_overrides = {},
-			custom_highlights = {},
+			custom_highlights = function(colors)
+				return {
+					NormalFloat = { bg = colors.base }, -- Make floating windows opaque
+				}
+			end,
+
 			integrations = {
 				-- TODO: Come back to this later after adding more plugins
 				gitsigns = true,
