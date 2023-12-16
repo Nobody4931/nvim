@@ -63,8 +63,7 @@ lazy.setup("ut.plugins.list", {
 		enabled = false,
 	},
 	change_detection = {
-		enabled = true,
-		notify = true,
+		enabled = false,
 	},
 	performance = {
 		cache = {
