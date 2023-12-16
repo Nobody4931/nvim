@@ -17,7 +17,10 @@ return {
 
 			custom_highlights = function(colors)
 				return {
-					NormalFloat = { bg = colors.base }, -- Make floating windows opaque
+					-- Make floating windows opaque
+					NormalFloat = { bg = colors.base },
+					FloatBorder = { bg = colors.base },
+					FloatTitle = { bg = colors.base },
 				}
 			end,
 
