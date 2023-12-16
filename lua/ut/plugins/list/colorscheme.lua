@@ -55,6 +55,6 @@ return {
 
 		config = function(_, opts)
 			require("catppuccin").setup(opts)
-		end
+		end,
 	},
 }
