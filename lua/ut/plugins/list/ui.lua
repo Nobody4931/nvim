@@ -155,6 +155,7 @@ return {
 		opts = {
 			delay = 100,
 			large_file_cutoff = 1000,
+			providers = { "lsp", "treesitter" },
 		},
 
 		config = function(_, opts)
