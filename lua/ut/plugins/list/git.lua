@@ -9,6 +9,7 @@ return {
 			"nvim-telescope/telescope.nvim",
 		},
 
+		cmd = "Neogit",
 		keys = {
 			{ "<leader>gg", function() require("neogit").open() end },
 			{ "<leader>gb", function() require("neogit").open({ "branch" }) end },
