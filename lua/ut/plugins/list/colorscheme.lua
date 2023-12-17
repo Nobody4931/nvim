@@ -18,35 +18,29 @@ return {
 
       custom_highlights = function(colors)
         return {
-          -- Make telescope's floating windows transparent
-          TelescopeNormal = { bg = colors.none, fg = colors.text },
-          TelescopeBorder = { bg = colors.none, fg = colors.blue },
-          TelescopeTitle = { bg = colors.none, fg = colors.blue },
-
-          -- Make neotree's floating windows transparent
-          NeoTreeFloatBorder = { bg = colors.none },
-          NeoTreeFloatTitle = { bg = colors.none },
-          -- Make NeoTree's inactive black statusline transparent
+          -- Fix NeoTree's inactive statusline being black
           NeoTreeStatusLineNC = { bg = colors.none },
 
-          -- Make floating windows opaque
-          NormalFloat = { bg = colors.base },
-          FloatBorder = { bg = colors.base },
-          FloatTitle = { bg = colors.base },
+          -- Make lazy.nvim and mason.nvim floating menus opaque
+          LazyNormal = { bg = colors.mantle },
+          MasonNormal = { bg = colors.mantle },
+
+          -- Make completion menu opaque
           Pmenu = { bg = colors.base },
         }
       end,
 
       integrations = {
-        -- TODO: Come back to this later after adding more plugins
-        gitsigns = true,
         fidget = true,
+        gitsigns = true,
         indent_blankline = {
           enabled = true,
-          colored_indent_levels = false,
         },
         markdown = true,
         mason = true,
+        mini = {
+          enabled = true,
+        },
         neotree = true,
         neogit = true,
         cmp = true,
