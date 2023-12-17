@@ -9,11 +9,11 @@ map('n', 'gb', '<C-^>')
 
 -- Send j/k movements to jumplist when a count is used
 map('n', 'j', function()
-	return (vim.v.count > 0 and ("m'" .. vim.v.count) or '') .. 'j'
+  return (vim.v.count > 0 and ("m'" .. vim.v.count) or '') .. 'j'
 end, { expr = true })
 
 map('n', 'k', function()
-	return (vim.v.count > 0 and ("m'" .. vim.v.count) or '') .. 'k'
+  return (vim.v.count > 0 and ("m'" .. vim.v.count) or '') .. 'k'
 end, { expr = true })
 
 -- Copy to system register
@@ -57,7 +57,7 @@ map('i', '<M-l>', '<C-o>A')
 
 -- Toggle word wrap
 map('n', '<leader>cw', function()
-	vim.opt.wrap = not vim.opt.wrap:get()
+  vim.opt.wrap = not vim.opt.wrap:get()
 end)
 
 vim.opt.wrap = false
