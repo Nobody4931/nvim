@@ -69,13 +69,12 @@ return {
             enable = true,
             disable = {},
 
-            -- TODO: Consider whether this should be put into <leader>c (code actions) or <leader>l (language/lsp actions)
             swap_next = {
-              ['<leader>lx'] = '@parameter.inner',
+              ['<leader>cxn'] = '@parameter.inner',
             },
 
             swap_previous = {
-              ['<leader>lX'] = '@parameter.inner',
+              ['<leader>cxp'] = '@parameter.inner',
             },
           },
 
