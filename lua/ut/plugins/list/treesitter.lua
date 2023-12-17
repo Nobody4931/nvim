@@ -13,83 +13,86 @@ return {
     event = { 'BufReadPost', 'VeryLazy' },
     cmd = { 'TSUpdate', 'TSInstall' },
 
-    opts = function()
-      local opts = {
-        ensure_installed = {
-          'comment',
-          'diff',
-          'git_config',
-          'git_rebase',
-          'gitattributes',
-          'gitcommit',
-          'gitignore',
-          'lua',
-          'luap',
-          'luadoc',
-          'markdown',
-          'markdown_inline',
-          'query',
-          'regex',
-          'vim',
-          'vimdoc',
-        },
-        ignore_install = {},
-        sync_install = false,
-        auto_install = true,
+    opts = {
+      ensure_installed = {
+        'comment',
+        'diff',
+        'git_config',
+        'git_rebase',
+        'gitattributes',
+        'gitcommit',
+        'gitignore',
+        'lua',
+        'luap',
+        'luadoc',
+        'markdown',
+        'markdown_inline',
+        'query',
+        'regex',
+        'vim',
+        'vimdoc',
+      },
+      ignore_install = {},
+      sync_install = false,
+      auto_install = true,
 
-        highlight = {
+      highlight = {
+        enable = true,
+        disable = {},
+        additional_vim_regex_highlighting = false,
+      },
+
+      incremental_selection = {
+        enable = true,
+        disable = {},
+        keymaps = {
+          init_selection = '<C-Space>',
+          node_incremental = '<C-Space>',
+          scope_incremental = false,
+          node_decremental = '<BS>',
+        },
+      },
+
+      indent = {
+        enable = true,
+        disable = {},
+      },
+
+      textobjects = {
+        select = {
           enable = true,
           disable = {},
-          additional_vim_regex_highlighting = false,
+          lookahead = true,
         },
 
-        incremental_selection = {
+        swap = {
           enable = true,
           disable = {},
-          keymaps = {
-            init_selection = '<C-Space>',
-            node_incremental = '<C-Space>',
-            scope_incremental = false,
-            node_decremental = '<BS>',
+          swap_next = {
+            ['<leader>cxn'] = '@parameter.inner',
+          },
+          swap_previous = {
+            ['<leader>cxp'] = '@parameter.inner',
           },
         },
 
-        indent = {
+        move = {
           enable = true,
           disable = {},
+          set_jumps = true,
         },
 
-        textobjects = {
-          select = {
-            enable = true,
-            disable = {},
-            lookahead = true,
-          },
-
-          swap = {
-            enable = true,
-            disable = {},
-
-            swap_next = {
-              ['<leader>cxn'] = '@parameter.inner',
-            },
-
-            swap_previous = {
-              ['<leader>cxp'] = '@parameter.inner',
-            },
-          },
-
-          move = {
-            enable = true,
-            disable = {},
-            set_jumps = true,
-          },
-
-          lsp_interop = {
-            enable = false,
-          },
+        lsp_interop = {
+          enable = false,
         },
-      }
+      },
+    },
+
+    config = function(_, opts)
+      -- Folding module
+      vim.opt.foldmethod = 'expr'
+      vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+      vim.opt.foldenable = false
 
       -- Textobjects keybinds
       local textobject_keys = {
@@ -138,15 +141,6 @@ return {
         mod_move.goto_previous_start['[i' .. key] = queries[1]
         mod_move.goto_previous_end['g[i' .. key] = queries[1]
       end
-
-      return opts
-    end,
-
-    config = function(_, opts)
-      -- Folding module
-      vim.opt.foldmethod = 'expr'
-      vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
-      vim.opt.foldenable = false
 
       -- Setup nvim-treesitter
       require('nvim-treesitter.configs').setup(opts)
