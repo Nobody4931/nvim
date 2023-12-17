@@ -99,12 +99,13 @@ return {
         winbar = {},
         inactive_winbar = {},
 
+        -- NOTE: Make sure to update extensions when adding a new plugin
         extensions = {
-          -- TODO: Come back to this later after adding more plugins
-          'quickfix',
-          'man',
           'lazy',
+          'man',
+          'mason',
           'neo-tree',
+          'quickfix',
         },
       }
     end,

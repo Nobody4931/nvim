@@ -32,6 +32,7 @@ return {
         }
       end,
 
+      -- NOTE: Make sure to update integrations when adding a new plugin
       integrations = {
         fidget = true,
         gitsigns = true,
