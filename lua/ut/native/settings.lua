@@ -38,6 +38,4 @@ opt.smartcase = true -- don't ignore case when the search query has both upperca
 opt.incsearch = true -- show search results incrementally
 opt.hlsearch = false -- don't highlight search results
 
-opt.matchpairs:append("<:>") -- TODO: Find somewhere to put this?
-
--- TODO: Make an autocmd for setting 'conceallevel' on 'help' files
+opt.matchpairs:append("<:>") -- pair up angle brackets
