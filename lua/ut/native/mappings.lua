@@ -1,7 +1,7 @@
 local map = vim.keymap.set
 
 -- Use a different keystroke to enter normal mode
-map({"", "i"}, "<C-c>", "<Esc>") -- ctrl+c in most modes
+map({"", "i"}, "<C-c>", "<Esc>", { remap = true }) -- ctrl+c in most modes
 map("t", "<C-q>", "<C-\\><C-n>") -- ctrl+q in terminal mode
 
 -- Switch to alternate file
