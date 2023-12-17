@@ -1,7 +1,7 @@
 local map = vim.keymap.set
 
 -- Use a different keystroke to enter normal mode
-map({"", "i"}, "<C-c>", "<Esc>", { remap = true }) -- ctrl+c in most modes
+map({ "", "i" }, "<C-c>", "<Esc>", { remap = true }) -- ctrl+c in most modes
 map("t", "<C-q>", "<C-\\><C-n>") -- ctrl+q in terminal mode
 
 -- Switch to alternate file
@@ -9,24 +9,24 @@ map("n", "gb", "<C-^>")
 
 -- Send j/k movements to jumplist when a count is used
 map("n", "j", function()
-	return (vim.v.count > 0 and ("m'" .. vim.v.count) or "") .. "j"
+  return (vim.v.count > 0 and ("m'" .. vim.v.count) or "") .. "j"
 end, { expr = true })
 
 map("n", "k", function()
-	return (vim.v.count > 0 and ("m'" .. vim.v.count) or "") .. "k"
+  return (vim.v.count > 0 and ("m'" .. vim.v.count) or "") .. "k"
 end, { expr = true })
 
 -- Copy to system register
-map({"n", "v"}, "<leader>y", "\"+y")
-map({"n", "v"}, "<leader>Y", "\"+Y")
+map({ "n", "v" }, "<leader>y", '"+y')
+map({ "n", "v" }, "<leader>Y", '"+Y')
 
 -- Paste from system register
-map({"n", "v"}, "<leader>p", "\"+p")
-map({"n", "v"}, "<leader>P", "\"+P")
+map({ "n", "v" }, "<leader>p", '"+p')
+map({ "n", "v" }, "<leader>P", '"+P')
 
 -- Delete without replacing register contents
-map({"n", "v"}, "<leader>d", "\"_d")
-map({"n", "v"}, "<leader>D", "\"_D")
+map({ "n", "v" }, "<leader>d", '"_d')
+map({ "n", "v" }, "<leader>D", '"_D')
 
 -- Center cursor while navigating
 map("n", "<C-u>", "<C-u>zz")
@@ -57,7 +57,7 @@ map("i", "<M-l>", "<C-o>A")
 
 -- Toggle word wrap
 map("n", "<leader>cw", function()
-	vim.opt.wrap = not vim.opt.wrap:get()
+  vim.opt.wrap = not vim.opt.wrap:get()
 end)
 
 vim.opt.wrap = false
