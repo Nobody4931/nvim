@@ -47,10 +47,10 @@ return {
 						deleted   = "D",
 						renamed   = "R",
 						untracked = "?",
-						ignored   = "-",
-						unstaged  = "U",
-						staged    = "S",
-						conflict  = "!",
+						ignored   = "",
+						unstaged  = "",
+						staged    = "",
+						conflict  = "",
 					}
 				},
 				symlink_target = {
