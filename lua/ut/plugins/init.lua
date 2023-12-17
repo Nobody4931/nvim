@@ -1,5 +1,3 @@
-local readme_path = vim.fn.stdpath("state") .. "/lazy/readme"
-local state_path = vim.fn.stdpath("state") .. "/lazy/state.json"
 local lock_path = vim.fn.stdpath("config") .. "/lazy_lock.json"
 local root_path = vim.fn.stdpath("data") .. "/lazy"
 local lazy_path = root_path .. "/lazy.nvim"
@@ -16,15 +14,18 @@ local lazy = require("lazy")
 -- Configure lazy.nvim and load plugins
 lazy.setup("ut.plugins.list", {
 	root = root_path,
-	state = state_path,
 	lockfile = lock_path,
+
 	defaults = {
 		lazy = true,
 	},
+
+	concurrency = vim.loop.available_parallelism(),
 	install = {
 		missing = true,
 		colorscheme = { "catppuccin", "habamax" },
 	},
+
 	ui = {
 		border = "none",
 		size = {
@@ -59,12 +60,19 @@ lazy.setup("ut.plugins.list", {
 			["<localleader>t"] = false,
 		},
 	},
+
 	checker = {
 		enabled = false,
 	},
+
 	change_detection = {
 		enabled = false,
 	},
+
+	readme = {
+		enabled = false,
+	},
+
 	performance = {
 		cache = {
 			enabled = true,
@@ -95,11 +103,6 @@ lazy.setup("ut.plugins.list", {
 				"tutor",
 			},
 		},
-	},
-	readme = {
-		enabled = true,
-		root = readme_path,
-		skip_if_doc_exists = true,
 	},
 })
 
