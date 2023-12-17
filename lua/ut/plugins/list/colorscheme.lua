@@ -32,12 +32,14 @@ return {
 					NormalFloat = { bg = colors.base },
 					FloatBorder = { bg = colors.base },
 					FloatTitle = { bg = colors.base },
+					Pmenu = { bg = colors.base },
 				}
 			end,
 
 			integrations = {
 				-- TODO: Come back to this later after adding more plugins
 				gitsigns = true,
+				fidget = true,
 				indent_blankline = {
 					enabled = true,
 					colored_indent_levels = false,
