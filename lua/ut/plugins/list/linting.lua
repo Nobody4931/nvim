@@ -1,3 +1,4 @@
+---@type LazySpec[]
 return {
   -- Asynchronous linter plugin that works alongside the native LSP client
   {
@@ -28,7 +29,7 @@ return {
         end
       end
 
-      -- Linter runner
+      -- Create autocmd to run linters
       vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufWritePost', 'InsertLeave' }, {
         group = vim.api.nvim_create_augroup('run_linters', { clear = true }),
         callback = function()

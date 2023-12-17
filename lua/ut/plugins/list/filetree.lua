@@ -1,3 +1,4 @@
+---@type LazySpec[]
 return {
   -- Highly customizable file tree focused on good user experience
   {

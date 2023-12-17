@@ -1,3 +1,4 @@
+---@type LazySpec[]
 return {
   -- Lightweight formatter plugin that works alongside the native LSP client
   {
@@ -32,7 +33,7 @@ return {
         end
       end
 
-      -- Formatter runner
+      -- Create autocmd to run formatters
       vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
         group = vim.api.nvim_create_augroup('run_formatters', { clear = true }),
         callback = function(args)

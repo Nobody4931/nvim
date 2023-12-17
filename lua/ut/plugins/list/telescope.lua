@@ -1,3 +1,4 @@
+---@type LazySpec[]
 return {
   -- Highly extensible fuzzy finder
   {

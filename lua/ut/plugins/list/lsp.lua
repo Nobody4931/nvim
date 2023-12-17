@@ -1,3 +1,4 @@
+---@type LazySpec[]
 return {
   -- Package manager for Neovim that can automatically install LSP servers, linters, formatters, etc.
   {

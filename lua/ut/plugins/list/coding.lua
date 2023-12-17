@@ -1,3 +1,4 @@
+---@type LazySpec[]
 return {
   -- Smart commenting plugin
   {
@@ -22,6 +23,7 @@ return {
       },
     },
 
+    ---@diagnostic disable-next-line: assign-type-mismatch
     keys = function(plugin)
       local opts = plugin.opts
       return {
@@ -64,6 +66,7 @@ return {
   {
     'echasnovski/mini.surround',
 
+    ---@diagnostic disable-next-line: assign-type-mismatch
     keys = function(plugin)
       local opts = plugin.opts
       return {
@@ -102,6 +105,7 @@ return {
   {
     'echasnovski/mini.move',
 
+    ---@diagnostic disable-next-line: assign-type-mismatch
     keys = function(plugin)
       local opts = plugin.opts
       return {
@@ -134,6 +138,7 @@ return {
   {
     'echasnovski/mini.align',
 
+    ---@diagnostic disable-next-line: assign-type-mismatch
     keys = function(plugin)
       local opts = plugin.opts
       return {

@@ -1,8 +1,10 @@
+---@type LazySpec[]
 return {
   {
     'catppuccin/nvim',
     name = 'catppuccin.nvim',
 
+    ---@type CatppuccinOptions
     opts = {
       flavour = 'mocha',
       transparent_background = true,
@@ -53,6 +55,8 @@ return {
         telescope = {
           enabled = true,
         },
+        -- Thanks catppuccin for not properly setting typedefs...
+        ---@diagnostic disable-next-line: assign-type-mismatch
         illuminate = {
           enabled = true,
           lsp = false,

@@ -1,3 +1,4 @@
+---@type LazySpec[]
 return {
   -- Git interface inspired by Magit
   {
