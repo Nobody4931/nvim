@@ -1,145 +1,145 @@
 return {
-  {
-    "numToStr/Comment.nvim",
+	{
+		'numToStr/Comment.nvim',
 
-    keys = function(plugin)
-      local opts = plugin.opts
-      return {
-        { opts.toggler.line },
-        { opts.toggler.block },
-        { opts.opleader.line, mode = { "n", "x" } },
-        { opts.opleader.block, mode = { "n", "x" } },
-        { opts.extra.above },
-        { opts.extra.below },
-        { opts.extra.eol },
-      }
-    end,
+		keys = function(plugin)
+			local opts = plugin.opts
+			return {
+				{ opts.toggler.line },
+				{ opts.toggler.block },
+				{ opts.opleader.line, mode = { 'n', 'x' } },
+				{ opts.opleader.block, mode = { 'n', 'x' } },
+				{ opts.extra.above },
+				{ opts.extra.below },
+				{ opts.extra.eol },
+			}
+		end,
 
-    opts = {
-      padding = true,
-      sticky = true,
+		opts = {
+			padding = true,
+			sticky = true,
 
-      toggler = {
-        line = "<leader>cll",
-        block = "<leader>cbb",
-      },
+			toggler = {
+				line = '<leader>cll',
+				block = '<leader>cbb',
+			},
 
-      opleader = {
-        line = "<leader>cl",
-        block = "<leader>cb",
-      },
+			opleader = {
+				line = '<leader>cl',
+				block = '<leader>cb',
+			},
 
-      extra = {
-        above = "<leader>cO",
-        below = "<leader>co",
-        eol = "<leader>cA",
-      },
+			extra = {
+				above = '<leader>cO',
+				below = '<leader>co',
+				eol = '<leader>cA',
+			},
 
-      mappings = {
-        basic = true,
-        extra = true,
-      },
-    },
+			mappings = {
+				basic = true,
+				extra = true,
+			},
+		},
 
-    ---@diagnostic disable-next-line: unused-local
-    config = function(_plugin, opts)
-      require("Comment").setup(opts)
-    end,
-  },
+		---@diagnostic disable-next-line: unused-local
+		config = function(_plugin, opts)
+			require('Comment').setup(opts)
+		end,
+	},
 
-  {
-    "echasnovski/mini.align",
+	{
+		'echasnovski/mini.align',
 
-    keys = function(plugin)
-      local opts = plugin.opts
-      return {
-        { opts.mappings.start, mode = { "n", "x" } },
-        { opts.mappings.start_with_preview, mode = { "n", "x" } },
-      }
-    end,
+		keys = function(plugin)
+			local opts = plugin.opts
+			return {
+				{ opts.mappings.start, mode = { 'n', 'x' } },
+				{ opts.mappings.start_with_preview, mode = { 'n', 'x' } },
+			}
+		end,
 
-    opts = {
-      mappings = {
-        start = "<leader>a",
-        start_with_preview = "<leader>A",
-      },
-    },
+		opts = {
+			mappings = {
+				start = '<leader>a',
+				start_with_preview = '<leader>A',
+			},
+		},
 
-    ---@diagnostic disable-next-line: unused-local
-    config = function(_plugin, opts)
-      require("mini.align").setup(opts)
-    end,
-  },
+		---@diagnostic disable-next-line: unused-local
+		config = function(_plugin, opts)
+			require('mini.align').setup(opts)
+		end,
+	},
 
-  {
-    "echasnovski/mini.move",
+	{
+		'echasnovski/mini.move',
 
-    keys = function(plugin)
-      local opts = plugin.opts
-      return {
-        { opts.mappings.left, mode = "x" },
-        { opts.mappings.right, mode = "x" },
-        { opts.mappings.down, mode = "x" },
-        { opts.mappings.up, mode = "x" },
-      }
-    end,
+		keys = function(plugin)
+			local opts = plugin.opts
+			return {
+				{ opts.mappings.left, mode = 'x' },
+				{ opts.mappings.right, mode = 'x' },
+				{ opts.mappings.down, mode = 'x' },
+				{ opts.mappings.up, mode = 'x' },
+			}
+		end,
 
-    opts = {
-      mappings = {
-        left = "H",
-        right = "L",
-        down = "J",
-        up = "K",
+		opts = {
+			mappings = {
+				left = 'H',
+				right = 'L',
+				down = 'J',
+				up = 'K',
 
-        line_left = "",
-        line_right = "",
-        line_down = "",
-        line_up = "",
-      },
-    },
+				line_left = '',
+				line_right = '',
+				line_down = '',
+				line_up = '',
+			},
+		},
 
-    ---@diagnostic disable-next-line: unused-local
-    config = function(_plugin, opts)
-      require("mini.move").setup(opts)
-    end,
-  },
+		---@diagnostic disable-next-line: unused-local
+		config = function(_plugin, opts)
+			require('mini.move').setup(opts)
+		end,
+	},
 
-  {
-    "echasnovski/mini.surround",
+	{
+		'echasnovski/mini.surround',
 
-    keys = function(plugin)
-      local opts = plugin.opts
-      return {
-        { opts.mappings.add, mode = { "n", "x" } },
-        { opts.mappings.replace },
-        { opts.mappings.delete },
-        { opts.mappings.find },
-        { opts.mappings.find_left },
-      }
-    end,
+		keys = function(plugin)
+			local opts = plugin.opts
+			return {
+				{ opts.mappings.add, mode = { 'n', 'x' } },
+				{ opts.mappings.replace },
+				{ opts.mappings.delete },
+				{ opts.mappings.find },
+				{ opts.mappings.find_left },
+			}
+		end,
 
-    opts = {
-      mappings = {
-        add = "<leader>ra",
-        replace = "<leader>rr",
-        delete = "<leader>rd",
-        find = "<leader>rn",
-        find_left = "<leader>rp",
-        highlight = "",
+		opts = {
+			mappings = {
+				add = '<leader>ra',
+				replace = '<leader>rr',
+				delete = '<leader>rd',
+				find = '<leader>rn',
+				find_left = '<leader>rp',
+				highlight = '',
 
-        update_n_lines = "",
+				update_n_lines = '',
 
-        suffix_last = "",
-        suffix_next = "",
-      },
+				suffix_last = '',
+				suffix_next = '',
+			},
 
-      search_method = "cover",
-      n_lines = 50,
-    },
+			search_method = 'cover',
+			n_lines = 50,
+		},
 
-    ---@diagnostic disable-next-line: unused-local
-    config = function(_plugin, opts)
-      require("mini.surround").setup(opts)
-    end,
-  },
+		---@diagnostic disable-next-line: unused-local
+		config = function(_plugin, opts)
+			require('mini.surround').setup(opts)
+		end,
+	},
 }

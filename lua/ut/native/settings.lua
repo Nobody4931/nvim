@@ -1,8 +1,8 @@
 local opt = vim.opt
 
 -- Mappings
-vim.g.mapleader = " " -- set the leader key to space
-vim.g.maplocalleader = " " -- set the buffer local leader key to space
+vim.g.mapleader = ' ' -- set the leader key to space
+vim.g.maplocalleader = ' ' -- set the buffer local leader key to space
 opt.timeout = false -- remove timeout for mappings
 
 -- Buffers
@@ -19,7 +19,7 @@ opt.swapfile = true -- use swapfiles for buffers
 opt.lazyredraw = true -- reduce unnecessary screen redraws
 opt.cursorline = true -- highlight the line the cursor is on
 opt.cursorcolumn = false -- don't highlight the column the cursor is on
-opt.guicursor = "a:block" -- use block cursor for all modes
+opt.guicursor = 'a:block' -- use block cursor for all modes
 
 -- Indentation
 opt.autoindent = true -- enable auto indent
@@ -38,4 +38,4 @@ opt.smartcase = true -- don't ignore case when the search query has both upperca
 opt.incsearch = true -- show search results incrementally
 opt.hlsearch = false -- don't highlight search results
 
-opt.matchpairs:append("<:>") -- pair up angle brackets
+opt.matchpairs:append('<:>') -- pair up angle brackets

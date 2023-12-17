@@ -1,3 +1,3 @@
 return {
-  { import = "ut.plugins.list.languages" },
+	{ import = 'ut.plugins.list.languages' },
 }
