@@ -1,216 +1,155 @@
 return {
+	-- Treesitter abstraction layer and configuration tool
 	{
 		"nvim-treesitter/nvim-treesitter",
 
 		build = ":TSUpdate",
+
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-textobjects",
 		},
 
-		event = "BufReadPost",
+		event = { "BufReadPost", "VeryLazy" },
+		cmd = { "TSUpdate", "TSInstall" },
 
-		opts = {
-			ensure_installed = { "comment", "vimdoc", "vim", "lua" },
-			ignore_install = { "markdown" },
-			sync_install = false,
-			auto_install = true,
+		opts = function()
+			local opts = {
+				ensure_installed = {
+					"comment",
+					"diff",
+					"git_config",
+					"git_rebase",
+					"gitattributes",
+					"gitcommit",
+					"gitignore",
+					"lua",
+					"luap",
+					"luadoc",
+					"markdown",
+					"markdown_inline",
+					"query",
+					"regex",
+					"vim",
+					"vimdoc",
+				},
+				ignore_install = {},
+				sync_install = false,
+				auto_install = true,
 
-			highlight = {
-				enable = true,
-				disable = {},
-				additional_vim_regex_highlighting = false,
-			},
-
-			incremental_selection = {
-				enable = true,
-				disable = {},
-				keymaps = {
-					init_selection    = "<C-Space>",
-					node_incremental  = "<C-Space>",
-					scope_incremental = "<M-Space>",
-					node_decremental  = "<C-Backspace>",
-				}
-			},
-
-			indent = {
-				enable = true,
-				disable = {},
-			},
-
-			textobjects = {
-				select = {
+				highlight = {
 					enable = true,
 					disable = {},
+					additional_vim_regex_highlighting = false,
+				},
 
-					lookahead = true,
-					include_surrounding_whitespace = false,
-
+				incremental_selection = {
+					enable = true,
+					disable = {},
 					keymaps = {
-						["ib"] = "@block.inner",
-						["ab"] = "@block.outer",
-
-						["ic"] = "@class.inner",
-						["ac"] = "@class.outer",
-						["if"] = "@function.inner",
-						["af"] = "@function.outer",
-
-						["in"] = "@conditional.inner",
-						["an"] = "@conditional.outer",
-						["il"] = "@loop.inner",
-						["al"] = "@loop.outer",
-
-						["ix"] = "@call.inner",
-						["ax"] = "@call.outer",
-						["ie"] = "@parameter.inner",
-						["ae"] = "@parameter.outer",
-
-						["im"] = "@comment.outer",
-						["am"] = "@comment.outer",
-					},
-
-					selection_modes = {
-						["@block.inner"] = "v",
-						["@block.outer"] = "V",
-
-						["@function.inner"] = "v",
-						["@function.outer"] = "V",
-						["@class.inner"] = "v",
-						["@class.outer"] = "V",
-
-						["@conditional.inner"] = "v",
-						["@conditional.outer"] = "V",
-						["@loop.inner"] = "v",
-						["@loop.outer"] = "V",
-
-						["@call.inner"] = "v",
-						["@call.outer"] = "v",
-						["@parameter.inner"] = "v",
-						["@parameter.outer"] = "v",
-
-						["@comment.outer"] = "v",
+						init_selection    = "<C-Space>",
+						node_incremental  = "<C-Space>",
+						scope_incremental = false,
+						node_decremental  = "<BS>",
 					},
 				},
 
-				move = {
+				indent = {
 					enable = true,
 					disable = {},
-
-					set_jumps = true,
-
-					goto_next_start = {
-						["]B"] = "@block.inner",
-						["]b"] = "@block.outer",
-
-						["]C"] = "@class.inner",
-						["]c"] = "@class.outer",
-						["]F"] = "@function.inner",
-						["]f"] = "@function.outer",
-
-						["]N"] = "@conditional.inner",
-						["]n"] = "@conditional.outer",
-						["]L"] = "@loop.inner",
-						["]l"] = "@loop.outer",
-
-						["]X"] = "@call.inner",
-						["]x"] = "@call.outer",
-						["]e"] = "@parameter.inner",
-
-						["]m"] = "@comment.outer",
-					},
-
-					goto_next_end = {
-						["g]B"] = "@block.inner",
-						["g]b"] = "@block.outer",
-
-						["g]C"] = "@class.inner",
-						["g]c"] = "@class.outer",
-						["g]F"] = "@function.inner",
-						["g]f"] = "@function.outer",
-
-						["g]N"] = "@conditional.inner",
-						["g]n"] = "@conditional.outer",
-						["g]L"] = "@loop.inner",
-						["g]l"] = "@loop.outer",
-
-						["g]X"] = "@call.inner",
-						["g]x"] = "@call.outer",
-						["g]e"] = "@parameter.inner",
-
-						["g]m"] = "@comment.outer",
-					},
-
-					goto_previous_start = {
-						["[B"] = "@block.inner",
-						["[b"] = "@block.outer",
-
-						["[C"] = "@class.inner",
-						["[c"] = "@class.outer",
-						["[F"] = "@function.inner",
-						["[f"] = "@function.outer",
-
-						["[N"] = "@conditional.inner",
-						["[n"] = "@conditional.outer",
-						["[L"] = "@loop.inner",
-						["[l"] = "@loop.outer",
-
-						["[X"] = "@call.inner",
-						["[x"] = "@call.outer",
-						["[e"] = "@parameter.inner",
-
-						["[m"] = "@comment.outer",
-					},
-
-					goto_previous_end = {
-						["g[B"] = "@block.inner",
-						["g[b"] = "@block.outer",
-
-						["g[C"] = "@class.inner",
-						["g[c"] = "@class.outer",
-						["g[F"] = "@function.inner",
-						["g[f"] = "@function.outer",
-
-						["g[N"] = "@conditional.inner",
-						["g[n"] = "@conditional.outer",
-						["g[L"] = "@loop.inner",
-						["g[l"] = "@loop.outer",
-
-						["g[X"] = "@call.inner",
-						["g[x"] = "@call.outer",
-						["g[e"] = "@parameter.inner",
-
-						["g[m"] = "@comment.outer",
-					},
 				},
 
-				swap = {
-					enable = true,
-					disable = {},
-
-					swap_next = {
-						["<leader>wn"] = "@parameter.inner"
+				textobjects = {
+					select = {
+						enable = true,
+						disable = {},
+						lookahead = true,
 					},
 
-					swap_previous = {
-						["<leader>wp"] = "@parameter.inner"
+					swap = {
+						enable = true,
+						disable = {},
+
+						-- TODO: Consider whether this should be put into <leader>c (code actions) or <leader>l (language/lsp actions)
+						swap_next = {
+							["<leader>lx"] = "@parameter.inner",
+						},
+
+						swap_previous = {
+							["<leader>lX"] = "@parameter.inner",
+						},
+					},
+
+					move = {
+						enable = true,
+						disable = {},
+						set_jumps = true,
+					},
+
+					lsp_interop = {
+						enable = false,
 					},
 				},
+			}
 
-				lsp_interop = {
-					enable = false,
-				}
-			},
-		},
+			-- Textobjects keybinds
+			local textobject_keys = {
+				-- NOTE: Please do not bind any keys to 'i' or 'a' - This will be harder to type
+				-- when selecting textobjects and also might break the move module
+				['s'] = { "@assignment.inner", "@assignment.outer" },
+				['T'] = { "@attribute.inner", "@attribute.outer" },
+				['b'] = { "@block.inner", "@block.outer" },
+				['x'] = { "@call.inner", "@call.outer" },
+				['c'] = { "@class.inner", "@class.outer" },
+				['m'] = { "@comment.inner", "@comment.outer" },
+				['n'] = { "@conditional.inner", "@conditional.outer" },
+				['f'] = { "@function.inner", "@function.outer" },
+				['l'] = { "@loop.inner", "@loop.outer" },
+				['N'] = { "@number.inner", "@number.inner" },
+				['e'] = { "@parameter.inner", "@parameter.outer" },
+				['R'] = { "@regex.inner", "@regex.outer" },
+				['r'] = { "@return.inner", "@return.outer" },
+				['S'] = { "@statement.outer", "@statement.outer" },
+			}
 
-		---@diagnostic disable-next-line: unused-local
-		config = function(_plugin, opts)
+			-- Textobjects select module
+			local mod_select = opts.textobjects.select
+			mod_select.keymaps = {}
+
+			for key, queries in pairs(textobject_keys) do
+				mod_select.keymaps["i" .. key] = queries[1]
+				mod_select.keymaps["a" .. key] = queries[2]
+			end
+
+			-- Textobjects move module
+			local mod_move = opts.textobjects.move
+			mod_move.goto_next_start = {}
+			mod_move.goto_next_end = {}
+			mod_move.goto_previous_start = {}
+			mod_move.goto_previous_end = {}
+
+			for key, queries in pairs(textobject_keys) do
+				mod_move.goto_next_start["]" .. key] = queries[2]
+				mod_move.goto_next_end["g]" .. key] = queries[2]
+				mod_move.goto_previous_start["[" .. key] = queries[2]
+				mod_move.goto_previous_end["g[" .. key] = queries[2]
+
+				mod_move.goto_next_start["]i" .. key] = queries[1]
+				mod_move.goto_next_end["g]i" .. key] = queries[1]
+				mod_move.goto_previous_start["[i" .. key] = queries[1]
+				mod_move.goto_previous_end["g[i" .. key] = queries[1]
+			end
+
+			return opts
+		end,
+
+		config = function(_, opts)
 			-- Folding module
 			vim.opt.foldmethod = "expr"
 			vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-			vim.opt.foldlevel = 999
 			vim.opt.foldenable = false
 
 			-- Setup nvim-treesitter
 			require("nvim-treesitter.configs").setup(opts)
-		end
+		end,
 	},
 }
