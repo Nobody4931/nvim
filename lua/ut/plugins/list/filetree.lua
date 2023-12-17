@@ -63,6 +63,7 @@ return {
 				width = "20%",
 				mappings = {
 					["<Space>"] = "none",
+					["e"] = "open",
 				},
 			},
 
