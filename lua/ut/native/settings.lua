@@ -27,15 +27,6 @@ opt.smartindent = true -- enable smart indent
 opt.expandtab = false -- don't expand tabs into spaces
 opt.tabstop = 4 -- make tabs 4 spaces wide
 opt.shiftwidth = 4 -- make indents 4 spaces wide
--- TODO: Decide on whether or not to keep this after adding UI improvement plugins
-opt.list = false
-opt.listchars = {
-	space = '·',
-	tab = '» ',
-	eol = '↲',
-	extends = '→',
-	precedes = '←',
-}
 
 -- Splits
 opt.splitbelow = true -- open horizontal splits on the bottom
