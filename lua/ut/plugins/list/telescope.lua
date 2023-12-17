@@ -76,8 +76,9 @@ return {
 			{ "<leader>sb", function() require("telescope.builtin").buffers() end },
 			{ "<leader>so", function() require("telescope.builtin").oldfiles() end },
 			{ "<leader>sm", function() require("telescope.builtin").marks() end },
-			{ "<leader>sc", function() require("telescope.builtin").quickfix() end },
+			{ "<leader>sq", function() require("telescope.builtin").quickfix() end },
 			{ "<leader>sl", function() require("telescope.builtin").loclist() end },
+			{ "<leader>sc", function() require("telescope.builtin").highlights() end },
 
 			{ "<leader>sn", function() require("telescope").extensions.notify.notify() end },
 		},
