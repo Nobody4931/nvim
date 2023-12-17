@@ -1,4 +1,5 @@
 return {
+	-- Completion provider
 	{
 		"hrsh7th/nvim-cmp",
 
@@ -45,8 +46,8 @@ return {
 							end
 						end, { "i", "s" }),
 
-						["<C-y>"] = cmp.mapping.confirm({ select = true }),
-						["<C-e>"] = cmp.mapping.abort(),
+						["<C-s>"] = cmp.mapping.confirm({ select = true }),
+						["<C-g>"] = cmp.mapping.abort(),
 
 						["<C-f>"] = cmp.mapping.scroll_docs(4),
 						["<C-b>"] = cmp.mapping.scroll_docs(-4),
@@ -58,17 +59,17 @@ return {
 						{
 							name = "buffer",
 							option = {
-								-- Provide completion from all visible buffers (with size < 512 KiB)
+								-- Provide completion from all visible buffers (with size < 2 MiB)
 								get_bufnrs = function()
 									local tab_wins = vim.api.nvim_tabpage_list_wins(0)
 									local tab_bufs = vim.tbl_map(vim.api.nvim_win_get_buf, tab_wins)
 									return vim.tbl_filter(function(bufnr)
 										local bytes = vim.api.nvim_buf_get_offset(bufnr, vim.api.nvim_buf_line_count(bufnr))
-										return bytes < 1024 * 512
+										return bytes < 1024 * 1024 * 2
 									end, tab_bufs)
-								end
-							}
-						}
+								end,
+							},
+						},
 					},
 
 					experimental = {
@@ -94,8 +95,8 @@ return {
 							end
 						end, { "c" }),
 
-						["<C-y>"] = cmp.mapping.confirm({ select = true }),
-						["<C-e>"] = cmp.mapping.abort(),
+						["<C-s>"] = cmp.mapping.confirm({ select = true }),
+						["<C-g>"] = cmp.mapping.abort(),
 					},
 
 					sources = {
@@ -106,16 +107,14 @@ return {
 			}
 		end,
 
-		---@diagnostic disable-next-line: unused-local
-		config = function(_plugin, opts)
-			vim.opt.completeopt = { "menu", "menuone", "noselect" }
-			vim.opt.pumheight = 25
-			vim.opt.pumwidth = 15
+		config = function(_, opts)
+			vim.opt.pumheight = math.floor(vim.o.lines * 0.5)
+			vim.opt.pumwidth = math.floor(vim.o.columns * 0.5)
 
 			local cmp = require("cmp")
 
 			cmp.setup(opts.core)
 			cmp.setup.cmdline(":", opts.cmdline)
-		end
+		end,
 	},
 }
