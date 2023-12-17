@@ -17,10 +17,16 @@ return {
 
 			custom_highlights = function(colors)
 				return {
-					-- Make telescope's floating window transparent
+					-- Make telescope's floating windows transparent
 					TelescopeNormal = { bg = colors.none, fg = colors.text },
 					TelescopeBorder = { bg = colors.none, fg = colors.blue },
 					TelescopeTitle = { bg = colors.none, fg = colors.blue },
+
+					-- Make neotree's floating windows transparent
+					NeoTreeFloatBorder = { bg = colors.none },
+					NeoTreeFloatTitle = { bg = colors.none },
+					-- Make NeoTree's inactive black statusline transparent
+					NeoTreeStatusLineNC = { bg = colors.none },
 
 					-- Make floating windows opaque
 					NormalFloat = { bg = colors.base },
