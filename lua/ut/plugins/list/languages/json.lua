@@ -1,3 +1,4 @@
+---@type LazySpec[]
 return {
   -- Add json grammars to treesitter
   {

@@ -1,3 +1,4 @@
+---@type LazySpec[]
 return {
   -- Add css grammars to treesitter
   {
