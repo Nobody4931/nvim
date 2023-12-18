@@ -1,81 +1,41 @@
-local env = require("ut.util.env")
-
-local g = vim.g
-local o = vim.opt
-
--- Leader key
-g.mapleader = " "
-g.maplocalleader = " "
-
--- Rendering
-o.wrap = false
-o.lazyredraw = true
-o.conceallevel = 3
-
--- Recovery files
-o.backup = false
-o.writebackup = true
-o.swapfile = false
-o.undofile = true
-o.undodir = vim.fn.stdpath("data") .. "/undo"
-
--- Mouse and cursor
-o.mouse = ""
-o.guicursor = "a:block"
-o.cursorcolumn = false
-o.cursorline = true
-
--- Screen scrolling
-o.scrolloff = 0
-o.scrolljump = 1
-o.sidescrolloff = 0
-o.sidescroll = 1
+local opt = vim.opt
 
 -- Mappings
-o.timeout = false
-o.ttimeout = true
+vim.g.mapleader = ' ' -- set the leader key to space
+vim.g.maplocalleader = ' ' -- set the buffer local leader key to space
+opt.timeout = false -- remove timeout for mappings
 
 -- Buffers
-o.hidden = true
-o.autoread = true
+opt.hidden = true -- keep buffers open in the background
+opt.autoread = true -- read and update for external changes to files
+
+-- Recovery files
+opt.writebackup = true -- save backup before writing to files
+opt.backup = false -- delete backup after writing to files
+opt.undofile = true -- save undo history
+opt.swapfile = true -- use swapfiles for buffers
+
+-- Rendering
+opt.lazyredraw = true -- reduce unnecessary screen redraws
+opt.cursorline = true -- highlight the line the cursor is on
+opt.cursorcolumn = false -- don't highlight the column the cursor is on
+opt.guicursor = 'a:block' -- use block cursor for all modes
 
 -- Indentation
-o.autoindent = true
-o.smartindent = true
+opt.autoindent = true -- enable auto indent
+opt.smartindent = true -- enable smart indent
+opt.expandtab = false -- don't expand tabs into spaces
+opt.tabstop = 4 -- make tabs 4 spaces wide
+opt.shiftwidth = 4 -- make indents 4 spaces wide
 
-o.expandtab = false
-o.tabstop = 4
-o.shiftwidth = 4
-
--- Splitting windows
-o.splitbelow = true
-o.splitright = true
+-- Splits
+opt.splitbelow = true -- open horizontal splits on the bottom
+opt.splitright = true -- open vertical splits on the right
 
 -- Searching
-o.incsearch = true
-o.hlsearch = false
+opt.ignorecase = true -- ignore case when searching
+opt.smartcase = true -- don't ignore case when the search query has both uppercase and lowercase
+opt.incsearch = true -- show search results incrementally
+opt.hlsearch = false -- don't highlight search results
 
-o.matchpairs:append("<:>")
-
--- GUI Neovim specific settings
-if env.is_gui_nvim() then
-	o.guifont = "ProggyVector NF:h11:#e-subpixelantialias"
-end
-
--- Neovide specific settings
-if env.is_neovide() then
-	g.neovide_fullscreen = false
-	g.neovide_remember_window_size = true
-
-	g.neovide_transparency = 1
-
-	g.neovide_floating_blur_amount_x = 0
-	g.neovide_floating_blur_amount_y = 0
-
-	g.neovide_hide_mouse_when_typing = false
-
-	g.neovide_scroll_animation_length = 0
-	g.neovide_cursor_animation_length = 0
-	g.neovide_cursor_trail_size = 0
-	g.neovide_cursor_vfx_mode = ""
-end
+opt.matchpairs:append('<:>') -- pair up angle brackets

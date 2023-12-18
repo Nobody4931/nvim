@@ -1,4 +1,4 @@
-# Neovim Config v3
+# Neovim Config v4
 
 A modern rewrite of my programming setup for Neovim, focused on:
 

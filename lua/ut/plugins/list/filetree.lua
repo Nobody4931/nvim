@@ -1,81 +1,106 @@
+---@type LazySpec[]
 return {
-	{
-		"nvim-tree/nvim-tree.lua",
+  -- Highly customizable file tree focused on good user experience
+  {
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = 'v3.x',
 
-		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-		},
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-tree/nvim-web-devicons',
+      'MunifTanjim/nui.nvim',
+    },
 
-		cmd = "NvimTreeToggle",
-		keys = {
-			{ "<leader>et", function() require("nvim-tree.api").tree.toggle() end },
-			{ "<leader>ef", function() require("nvim-tree.api").tree.focus() end },
-			{ "<leader>eF", function() require("nvim-tree.api").tree.find_file({ open = true, focus = true, current_window = false }) end },
-		},
+    cmd = 'Neotree',
+    keys = {
+      {
+        '<leader>et',
+        function()
+          require('neo-tree.command').execute({ action = 'show', toggle = true })
+        end,
+      },
+      {
+        '<leader>eT',
+        function()
+          require('neo-tree.command').execute({ action = 'focus', toggle = true })
+        end,
+      },
+      {
+        '<leader>ef',
+        function()
+          require('neo-tree.command').execute({ action = 'focus' })
+        end,
+      },
+      {
+        '<leader>eF',
+        function()
+          require('neo-tree.command').execute({ action = 'focus', reveal_file = vim.fn.expand('%:p') })
+        end,
+      },
+    },
 
-		opts = {
-			sort_by = "name",
-			sync_root_with_cwd = true,
+    opts = {
+      close_if_last_window = false,
+      popup_border_style = 'rounded',
 
-			view = {
-				width = "20%",
-				side = "left",
-			},
+      enable_git_status = true,
+      enable_diagnostics = true,
+      enable_normal_mode_for_inputs = false,
+      sort_case_insensitive = false,
 
-			renderer = {
-				add_trailing = true,
-				group_empty = false,
-				root_folder_label = function(path)
-					return vim.fn.fnamemodify(vim.fs.normalize(path), ":~")
-				end,
-				indent_width = 2,
-				indent_markers = {
-					enable = true,
-				},
-				special_files = {},
-			},
+      default_component_configs = {
+        container = {
+          enable_character_fade = false,
+        },
+        indent = {
+          with_expanders = true,
+        },
+        modified = {
+          symbol = '[+]',
+        },
+        name = {
+          trailing_slash = true,
+          use_git_status_colors = false,
+        },
+        git_status = {
+          symbols = {
+            added = 'A',
+            modified = 'M',
+            deleted = 'D',
+            renamed = 'R',
+            untracked = '?',
+            ignored = '',
+            unstaged = '',
+            staged = '',
+            conflict = '',
+          },
+        },
+        symlink_target = {
+          enabled = true,
+        },
+      },
 
-			diagnostics = {
-				enable = true,
-				show_on_dirs = true,
-				show_on_open_dirs = true,
-			},
+      window = {
+        position = 'left',
+        width = '20%',
+        mappings = {
+          ['<Space>'] = 'none',
+          ['e'] = 'open',
+        },
+      },
 
-			filesystem_watchers = {
-				enable = true,
-			},
+      filesystem = {
+        filtered_items = {
+          visible = true,
+          hide_dotfiles = false,
+          hide_gitignored = true,
+          hide_hidden = false,
+        },
+      },
+    },
 
-			git = {
-				enable = true,
-				ignore = false,
-				show_on_dirs = true,
-				show_on_open_dirs = true,
-			},
-
-			modified = {
-				enable = false,
-			},
-
-			actions = {
-				change_dir = {
-					global = true,
-				},
-				file_popup = {
-					open_win_config = {
-						border = "none",
-					},
-				},
-				open_file = {
-					window_picker = {
-						enable = true,
-					},
-				},
-			},
-		},
-
-		---@diagnostic disable-next-line: unused-local
-		config = function(_plugin, opts)
-			require("nvim-tree").setup(opts)
-		end
-	},
+    config = function(_, opts)
+      require('neo-tree').setup(opts)
+    end,
+  },
 }
