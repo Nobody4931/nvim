@@ -143,9 +143,16 @@ return {
       },
 
       {
-        '<leader>sl',
+        '<leader>sQ',
         function()
           require('telescope.builtin').loclist()
+        end,
+      },
+
+      {
+        '<leader>sk',
+        function()
+          require('telescope.builtin').keymaps()
         end,
       },
 
