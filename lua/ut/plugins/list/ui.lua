@@ -39,6 +39,35 @@ return {
     end,
   },
 
+  -- Better vim.ui.input() and vim.ui.select()
+  {
+    'stevearc/dressing.nvim',
+
+    dependencies = {
+      'nvim-telescope/telescope.nvim',
+    },
+
+    init = function()
+      -- Create custom lazy loaders to load the plugin on function call
+
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.input = function(...)
+        require('lazy').load({ plugins = { 'dressing.nvim' } })
+        return vim.ui.input(...)
+      end
+
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.select = function(...)
+        require('lazy').load({ plugins = { 'dressing.nvim' } })
+        return vim.ui.select(...)
+      end
+    end,
+
+    config = function()
+      require('dressing').setup()
+    end,
+  },
+
   -- Customizable statusline
   {
     'nvim-lualine/lualine.nvim',
@@ -105,6 +134,7 @@ return {
           'man',
           'mason',
           'neo-tree',
+          'overseer',
           'quickfix',
         },
       }

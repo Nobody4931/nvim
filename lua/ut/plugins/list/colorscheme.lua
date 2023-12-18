@@ -53,6 +53,7 @@ return {
         notify = true,
         semantic_tokens = true,
         treesitter = true,
+        overseer = true,
         telescope = {
           enabled = true,
         },
