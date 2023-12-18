@@ -6,21 +6,21 @@ return {
     cmd = { 'OverseerToggle', 'OverseerOpen', 'OverseerClose', 'OverseerRun', 'OverseerRunCmd' },
     keys = {
       {
-        '<leader>ot',
+        '<leader>te',
         function()
           require('overseer').toggle({ enter = false })
         end,
       },
 
       {
-        '<leader>of',
+        '<leader>tf',
         function()
           require('overseer').open({ enter = true })
         end,
       },
 
       {
-        '<leader>or',
+        '<leader>tr',
         function()
           require('overseer').run_template({ prompt = 'always' })
         end,
