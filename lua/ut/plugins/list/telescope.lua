@@ -59,7 +59,10 @@ return {
         function()
           vim.ui.input({ prompt = 'Grep String: ' }, function(input)
             if input then
-              require('telescope.builtin').grep_string({ search = input })
+              require('telescope.builtin').grep_string({
+                search = input,
+                additional_args = { '--hidden' },
+              })
             end
           end)
         end,
@@ -68,7 +71,32 @@ return {
       {
         '<leader>sG',
         function()
-          require('telescope.builtin').live_grep()
+          vim.ui.input({ prompt = 'Grep String (All Files): ' }, function(input)
+            if input then
+              require('telescope.builtin').grep_string({
+                search = input,
+                additional_args = { '--hidden', '--no-ignore' },
+              })
+            end
+          end)
+        end,
+      },
+
+      {
+        '<leader>sl',
+        function()
+          require('telescope.builtin').live_grep({
+            additional_args = { '--hidden' },
+          })
+        end,
+      },
+
+      {
+        '<leader>sL',
+        function()
+          require('telescope.builtin').live_grep({
+            additional_args = { '--hidden', '--no-ignore' },
+          })
         end,
       },
 
