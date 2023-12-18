@@ -46,10 +46,10 @@ return {
         enable = true,
         disable = {},
         keymaps = {
-          init_selection = '<C-Space>',
-          node_incremental = '<C-Space>',
-          scope_incremental = false,
-          node_decremental = '<BS>',
+          init_selection = '<C-n>',
+          node_incremental = '<C-n>',
+          scope_incremental = '<M-n>',
+          node_decremental = '<C-p>',
         },
       },
 
