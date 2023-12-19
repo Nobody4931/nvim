@@ -25,6 +25,13 @@ return {
           require('overseer').run_template({ prompt = 'always' })
         end,
       },
+
+      {
+        '<leader>tR',
+        function()
+          require('overseer').run_template({ prompt = 'missing', name = 'shell' })
+        end,
+      },
     },
 
     opts = {
