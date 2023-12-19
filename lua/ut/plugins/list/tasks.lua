@@ -6,7 +6,7 @@ return {
     cmd = { 'OverseerToggle', 'OverseerOpen', 'OverseerClose', 'OverseerRun', 'OverseerRunCmd' },
     keys = {
       {
-        '<leader>tt',
+        '<leader>te',
         function()
           require('overseer').toggle({ enter = false })
         end,
