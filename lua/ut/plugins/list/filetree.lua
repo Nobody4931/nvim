@@ -14,15 +14,9 @@ return {
     cmd = 'Neotree',
     keys = {
       {
-        '<leader>et',
+        '<leader>ee',
         function()
           require('neo-tree.command').execute({ action = 'show', toggle = true })
-        end,
-      },
-      {
-        '<leader>eT',
-        function()
-          require('neo-tree.command').execute({ action = 'focus', toggle = true })
         end,
       },
       {
