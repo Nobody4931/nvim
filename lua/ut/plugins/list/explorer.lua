@@ -27,7 +27,23 @@ return {
       {
         '<leader>ec',
         function()
+          local oil = require('oil')
+          oil.discard_all_changes()
+          oil.close()
+        end,
+      },
+
+      {
+        '<leader>eC',
+        function()
           require('oil').close()
+        end,
+      },
+
+      {
+        '<leader>ed',
+        function()
+          require('oil').discard_all_changes()
         end,
       },
     },
