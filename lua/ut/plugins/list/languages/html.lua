@@ -11,7 +11,7 @@ return {
     end,
   },
 
-  -- Add html language server to lspconfig
+  -- Add html language servers to lspconfig
   {
     'neovim/nvim-lspconfig',
 

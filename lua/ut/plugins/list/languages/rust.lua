@@ -11,7 +11,7 @@ return {
     end,
   },
 
-  -- Add rust language server to lspconfig
+  -- Add rust language servers to lspconfig
   {
     'neovim/nvim-lspconfig',
 

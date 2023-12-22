@@ -11,7 +11,7 @@ return {
     end,
   },
 
-  -- Add c/cpp language server to lspconfig
+  -- Add c/cpp language servers to lspconfig
   {
     'neovim/nvim-lspconfig',
 

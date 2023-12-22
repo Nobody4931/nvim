@@ -11,8 +11,8 @@ return {
     end,
   },
 
-  -- Add javascript/typescript language server to lspconfig
-  -- Add javascript/typescript linter to lspconfig
+  -- Add javascript/typescript language servers to lspconfig
+  -- Add javascript/typescript linters to lspconfig
   {
     'neovim/nvim-lspconfig',
 

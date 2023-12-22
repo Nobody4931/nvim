@@ -11,7 +11,7 @@ return {
     end,
   },
 
-  -- Add css language server to lspconfig
+  -- Add css language servers to lspconfig
   {
     'neovim/nvim-lspconfig',
 

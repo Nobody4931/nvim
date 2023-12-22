@@ -11,7 +11,7 @@ return {
     end,
   },
 
-  -- Add json language server to lspconfig
+  -- Add json language servers to lspconfig
   {
     'neovim/nvim-lspconfig',
 
