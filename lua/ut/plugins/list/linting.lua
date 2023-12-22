@@ -12,6 +12,7 @@ return {
 
     opts = {
       linters_by_ft = {},
+      ignore_install = {},
     },
 
     config = function(_, opts)
@@ -22,9 +23,11 @@ return {
       local mason_registry = require('mason-registry')
       for _, linters in pairs(opts.linters_by_ft) do
         for _, linter in ipairs(linters) do
-          local linter_pkg = mason_registry.get_package(linter)
-          if not linter_pkg:is_installed() then
-            linter_pkg:install()
+          if not opts.ignore_install[linter] then
+            local linter_pkg = mason_registry.get_package(linter)
+            if not linter_pkg:is_installed() then
+              linter_pkg:install()
+            end
           end
         end
       end

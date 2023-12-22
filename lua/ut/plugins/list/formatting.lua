@@ -14,6 +14,7 @@ return {
       formatters_by_ft = {
         lua = { 'stylua' },
       },
+      ignore_install = {},
     },
 
     config = function(_, opts)
@@ -26,9 +27,11 @@ return {
       local mason_registry = require('mason-registry')
       for _, formatters in pairs(opts.formatters_by_ft) do
         for _, formatter in ipairs(formatters) do
-          local formatter_pkg = mason_registry.get_package(formatter)
-          if not formatter_pkg:is_installed() then
-            formatter_pkg:install()
+          if not opts.ignore_install[formatter] then
+            local formatter_pkg = mason_registry.get_package(formatter)
+            if not formatter_pkg:is_installed() then
+              formatter_pkg:install()
+            end
           end
         end
       end
