@@ -14,6 +14,7 @@ return {
       formatters_by_ft = {
         lua = { 'stylua' },
       },
+      formatter_install_names = {},
       ignore_install = {},
     },
 
@@ -28,7 +29,8 @@ return {
       for _, formatters in pairs(opts.formatters_by_ft) do
         for _, formatter in ipairs(formatters) do
           if not opts.ignore_install[formatter] then
-            local formatter_pkg = mason_registry.get_package(formatter)
+            local formatter_name = opts.formatter_install_names[formatter] or formatter
+            local formatter_pkg = mason_registry.get_package(formatter_name)
             if not formatter_pkg:is_installed() then
               formatter_pkg:install()
             end

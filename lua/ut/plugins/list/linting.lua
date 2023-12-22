@@ -12,6 +12,7 @@ return {
 
     opts = {
       linters_by_ft = {},
+      linter_install_names = {},
       ignore_install = {},
     },
 
@@ -24,7 +25,8 @@ return {
       for _, linters in pairs(opts.linters_by_ft) do
         for _, linter in ipairs(linters) do
           if not opts.ignore_install[linter] then
-            local linter_pkg = mason_registry.get_package(linter)
+            local linter_name = opts.linter_install_names[linter] or linter
+            local linter_pkg = mason_registry.get_package(linter_name)
             if not linter_pkg:is_installed() then
               linter_pkg:install()
             end
