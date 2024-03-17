@@ -10,7 +10,7 @@ return {
     cmd = 'Mason',
 
     opts = {
-      max_concurrent_installers = 3,
+      max_concurrent_installers = math.floor(math.max(1, vim.loop.available_parallelism() / 3)),
 
       ui = {
         border = 'none',
@@ -22,8 +22,6 @@ return {
           package_pending = '',
           package_uninstalled = '',
         },
-
-        check_outdated_packages_on_open = false,
       },
     },
 
