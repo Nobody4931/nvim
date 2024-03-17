@@ -13,23 +13,83 @@ return {
       },
 
       {
-        '<leader>tf',
+        '<leader>tE',
         function()
           require('overseer').open({ enter = true })
         end,
       },
 
       {
-        '<leader>tr',
+        '<leader>to',
         function()
           require('overseer').run_template({ prompt = 'always' })
         end,
       },
 
       {
-        '<leader>tR',
+        '<leader>tO',
         function()
           require('overseer').run_template({ prompt = 'missing', name = 'shell' })
+        end,
+      },
+
+      {
+        '<leader>ta',
+        function()
+          local overseer = require('overseer')
+          local tasks = overseer.list_tasks({ recent_first = true })
+          local task = tasks[1]
+          if task then
+            overseer.run_action(task)
+          end
+        end,
+      },
+
+      {
+        '<leader>tp',
+        function()
+          local overseer = require('overseer')
+          local tasks = overseer.list_tasks({ recent_first = true })
+          local task = tasks[1]
+          if task then
+            overseer.run_action(task, 'open float')
+          end
+        end,
+      },
+
+      {
+        '<leader>tr',
+        function()
+          local overseer = require('overseer')
+          local tasks = overseer.list_tasks({ recent_first = true })
+          local task = tasks[1]
+          if task then
+            overseer.run_action(task, 'restart')
+          end
+        end,
+      },
+
+      {
+        '<leader>tc',
+        function()
+          local overseer = require('overseer')
+          local tasks = overseer.list_tasks({ recent_first = true })
+          local task = tasks[1]
+          if task then
+            overseer.run_action(task, 'edit')
+          end
+        end,
+      },
+
+      {
+        '<leader>td',
+        function()
+          local overseer = require('overseer')
+          local tasks = overseer.list_tasks({ recent_first = true })
+          local task = tasks[1]
+          if task then
+            overseer.run_action(task, 'dispose')
+          end
         end,
       },
     },
