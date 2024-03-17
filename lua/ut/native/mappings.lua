@@ -35,9 +35,6 @@ map('n', '<C-d>', '<C-d>zz')
 map('n', '<C-f>', '<C-f>zz')
 map('n', '<C-b>', '<C-b>zz')
 
-map('n', 'n', 'nzzzv')
-map('n', 'N', 'Nzzzv')
-
 -- Navigate the quickfix/location list
 map('n', '<C-j>', '<CMD>cnext<CR>zz')
 map('n', '<C-k>', '<CMD>cprev<CR>zz')
