@@ -23,6 +23,7 @@ autocmd('InsertLeave', {
 })
 
 -- Clean trailing whitespace on save
+-- TODO: Remove this if the .editorconfig adds this functionality natively
 local clean_whitespace = augroup('clean_whitespace', augroup_opts)
 
 autocmd('BufWritePre', {
