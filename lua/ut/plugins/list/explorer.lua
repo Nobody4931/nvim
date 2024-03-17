@@ -25,7 +25,7 @@ return {
       },
 
       {
-        '<leader>ec',
+        '<leader>eq',
         function()
           local oil = require('oil')
           oil.discard_all_changes()
@@ -34,7 +34,7 @@ return {
       },
 
       {
-        '<leader>eC',
+        '<leader>eQ',
         function()
           require('oil').close()
         end,
