@@ -34,8 +34,8 @@ opt.splitright = true -- open vertical splits on the right
 
 -- Searching
 opt.ignorecase = true -- ignore case when searching
-opt.smartcase = true -- don't ignore case when the search query has both uppercase and lowercase
+opt.smartcase = true -- don't ignore case when the search query has mixed casing
 opt.incsearch = true -- show search results incrementally
 opt.hlsearch = false -- don't highlight search results
 
-opt.matchpairs:append('<:>') -- pair up angle brackets
+opt.matchpairs:append('<:>') -- pair up angled brackets
