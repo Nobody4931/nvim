@@ -108,6 +108,7 @@ return {
           },
         },
       },
+
       task_editor = {
         bindings = {
           i = {
