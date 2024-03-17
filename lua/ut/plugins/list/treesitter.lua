@@ -89,11 +89,6 @@ return {
     },
 
     config = function(_, opts)
-      -- Folding module
-      vim.opt.foldmethod = 'expr'
-      vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
-      vim.opt.foldenable = false
-
       -- Textobjects keybinds
       local textobject_keys = {
         -- NOTE: Please do not bind any keys to 'i' or 'a' - This will be harder to type
