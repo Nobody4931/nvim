@@ -74,70 +74,261 @@ return {
 
     dependencies = {
       'nvim-tree/nvim-web-devicons',
+      { 'catppuccin/nvim', name = 'catppuccin.nvim' },
     },
 
     event = 'VeryLazy',
 
     opts = function()
-      local component_mode = function()
-        return '正'
-      end
+      local colors = require('catppuccin.palettes').get_palette(require('catppuccin').options.flavour)
 
-      local component_branch = 'branch'
-      local component_diff = 'diff'
-      local component_diagnostics = { 'diagnostics', sources = { 'nvim_lsp', 'nvim_diagnostic' } }
+      local active_fg = colors.text
+      local inactive_fg = colors.overlay0
 
-      local component_filename = { 'filename', path = 1 }
-
-      local component_filesize = 'filesize'
-      local component_filetype = { 'filetype', icon = { align = 'right' } }
-
-      local component_progress = 'progress'
-
-      local component_location = 'location'
-
-      return {
+      local opts = {
         options = {
-          theme = 'catppuccin',
-          icons_enabled = true,
-          globalstatus = false,
-          always_divide_middle = true,
+          -- Disable separators
           component_separators = '',
           section_separators = '',
+
+          theme = {
+            normal = {
+              c = {
+                fg = active_fg,
+                bg = colors.surface0,
+              },
+            },
+
+            inactive = {
+              c = {
+                fg = inactive_fg,
+                bg = colors.surface0,
+              },
+            },
+          },
+
+          globalstatus = false,
         },
 
         sections = {
-          lualine_a = { component_mode },
-          lualine_b = { component_branch, component_diff, component_diagnostics },
-          lualine_c = { component_filename },
-          lualine_x = { component_filesize, component_filetype },
-          lualine_y = { component_progress },
-          lualine_z = { component_location },
+          -- Remove defaults from non-center sections
+          lualine_a = {},
+          lualine_b = {},
+          lualine_y = {},
+          lualine_z = {},
+          -- Empty center sections to fill manually later
+          lualine_c = {},
+          lualine_x = {},
         },
 
         inactive_sections = {
+          -- Remove defaults from non-center sections
           lualine_a = {},
           lualine_b = {},
-          lualine_c = { component_filename },
-          lualine_x = { component_location },
           lualine_y = {},
           lualine_z = {},
-        },
-
-        tabline = {},
-        winbar = {},
-        inactive_winbar = {},
-
-        -- NOTE: Make sure to update extensions when adding a new plugin
-        extensions = {
-          'lazy',
-          'man',
-          'mason',
-          'neo-tree',
-          'overseer',
-          'quickfix',
+          -- Empty center sections to fill manually later
+          lualine_c = {},
+          lualine_x = {},
         },
       }
+
+      local add_component = function(side, component_factory)
+        local side_tbl = (side == 'l') and 'lualine_c' or 'lualine_x'
+        table.insert(opts.sections[side_tbl], component_factory(true))
+        table.insert(opts.inactive_sections[side_tbl], component_factory(false))
+      end
+
+      -- Mode component
+      add_component('l', function(active)
+        return {
+          function()
+            return '▊'
+          end,
+
+          color = function()
+            local mode_colors = {
+              -- Normal mode
+              ['n'] = colors.blue,
+              ['no'] = colors.blue,
+
+              -- Insert mode
+              ['i'] = colors.green,
+              ['ic'] = colors.green,
+
+              -- Visual mode
+              ['v'] = colors.mauve,
+              ['V'] = colors.mauve,
+              [''] = colors.mauve,
+
+              -- Command mode
+              ['c'] = colors.teal,
+              ['cv'] = colors.teal,
+
+              -- Terminal mode
+              ['t'] = colors.green,
+
+              -- Select mode
+              ['s'] = colors.peach,
+              ['S'] = colors.peach,
+              [''] = colors.peach,
+
+              -- Replace mode
+              ['R'] = colors.red,
+              ['Rv'] = colors.red,
+
+              -- Pending input modes
+              ['r'] = colors.blue,
+              ['rm'] = colors.blue,
+              ['r?'] = colors.blue,
+            }
+
+            return { fg = active and mode_colors[vim.fn.mode()] or inactive_fg }
+          end,
+
+          padding = {
+            right = 1,
+          },
+        }
+      end)
+
+      -- Icon component
+      add_component('l', function()
+        return {
+          function()
+            return '宇'
+          end,
+
+          padding = {
+            right = 1,
+          },
+        }
+      end)
+
+      -- File size component
+      add_component('l', function()
+        return {
+          'filesize',
+
+          padding = {
+            right = 2,
+          },
+
+          draw_empty = true,
+        }
+      end)
+
+      -- File type component
+      add_component('l', function(active)
+        return {
+          'filetype',
+          colored = active,
+          icon_only = true,
+          padding = {
+            right = 1,
+          },
+        }
+      end)
+
+      -- File name component
+      add_component('l', function(active)
+        return {
+          'filename',
+          file_status = false,
+          newfile_status = false,
+          path = 1,
+
+          symbols = {
+            unnamed = '*unnamed file*',
+          },
+
+          color = { fg = active and (vim.bo.modified and colors.peach or colors.lavender) or inactive_fg, gui = 'bold' },
+          padding = {
+            right = 2,
+          },
+        }
+      end)
+
+      -- Cursor location component
+      add_component('l', function()
+        return {
+          'location',
+          padding = {
+            right = 1,
+          },
+        }
+      end)
+
+      -- Cursor progress component
+      add_component('l', function()
+        return {
+          'progress',
+          padding = {
+            right = 1,
+          },
+        }
+      end)
+
+      -- Diagnostics component
+      add_component('l', function(active)
+        return {
+          'diagnostics',
+          colored = active,
+          sources = { 'nvim_diagnostic' },
+          symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
+          padding = 0,
+        }
+      end)
+
+      -- File encoding component
+      add_component('r', function(active)
+        return {
+          'o:encoding',
+          fmt = string.upper,
+          color = { fg = active and colors.flamingo or inactive_fg },
+          padding = {
+            right = 1,
+          },
+        }
+      end)
+
+      -- File format component
+      add_component('r', function(active)
+        return {
+          'o:fileformat',
+          fmt = string.upper,
+          color = { fg = active and colors.flamingo or inactive_fg },
+          padding = {
+            right = 1,
+          },
+        }
+      end)
+
+      -- Git branch component
+      add_component('r', function(active)
+        return {
+          'branch',
+          icon = '',
+          color = { fg = active and colors.pink or inactive_fg },
+          padding = {
+            right = 1,
+          },
+        }
+      end)
+
+      -- Git diff component
+      add_component('r', function(active)
+        return {
+          'diff',
+          colored = active,
+          symbols = { added = ' ', modified = ' ', removed = ' ' },
+          padding = {
+            right = 1,
+          },
+        }
+      end)
+
+      return opts
     end,
 
     config = function(_, opts)
