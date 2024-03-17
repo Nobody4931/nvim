@@ -48,7 +48,7 @@ return {
         keymaps = {
           init_selection = '<C-n>',
           node_incremental = '<C-n>',
-          scope_incremental = '<M-n>',
+          scope_incremental = false,
           node_decremental = '<C-p>',
         },
       },
