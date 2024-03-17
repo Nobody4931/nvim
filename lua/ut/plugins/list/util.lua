@@ -6,6 +6,7 @@ return {
   -- Icon provider library
   { 'nvim-tree/nvim-web-devicons' },
 
+  -- TODO: Remove this if unneeded
   -- UI component library
   { 'MunifTanjim/nui.nvim' },
 }
