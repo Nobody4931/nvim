@@ -8,6 +8,7 @@ return {
     opts = {
       flavour = 'mocha',
       transparent_background = true,
+      show_end_of_buffer = true,
       term_colors = true,
 
       dim_inactive = {
@@ -20,9 +21,6 @@ return {
 
       custom_highlights = function(colors)
         return {
-          -- Fix NeoTree's inactive statusline being black
-          NeoTreeStatusLineNC = { bg = colors.none },
-
           -- Make lazy.nvim and mason.nvim floating menus opaque
           LazyNormal = { bg = colors.mantle },
           MasonNormal = { bg = colors.mantle },
@@ -44,7 +42,6 @@ return {
         mini = {
           enabled = true,
         },
-        neotree = true,
         neogit = true,
         cmp = true,
         native_lsp = {
@@ -61,7 +58,7 @@ return {
         ---@diagnostic disable-next-line: assign-type-mismatch
         illuminate = {
           enabled = true,
-          lsp = false,
+          lsp = true,
         },
       },
     },
