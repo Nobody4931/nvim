@@ -244,7 +244,10 @@ return {
             unnamed = '*unnamed file*',
           },
 
-          color = { fg = active and (vim.bo.modified and colors.peach or colors.lavender) or inactive_fg, gui = 'bold' },
+          color = function()
+            return { fg = active and (vim.bo.modified and colors.peach or colors.lavender) or inactive_fg, gui = 'bold' }
+          end,
+
           padding = {
             right = 2,
           },
