@@ -202,6 +202,8 @@ return {
           padding = {
             right = 1,
           },
+
+          color = { gui = 'bold' },
         }
       end)
 
