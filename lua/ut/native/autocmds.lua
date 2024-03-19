@@ -22,19 +22,6 @@ autocmd('InsertLeave', {
   end,
 })
 
--- Clean trailing whitespace on save
--- TODO: Remove this if the .editorconfig adds this functionality natively
-local clean_whitespace = augroup('clean_whitespace', augroup_opts)
-
-autocmd('BufWritePre', {
-  group = clean_whitespace,
-  callback = function()
-    vim.cmd([[normal mz]])
-    vim.cmd([[silent! keepjumps %s/\s\+$//e]])
-    vim.cmd([[normal g`z]])
-  end,
-})
-
 -- Enforce 'formatoptions' setting
 local format_options = augroup('format_options', augroup_opts)
 
