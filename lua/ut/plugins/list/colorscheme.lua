@@ -58,7 +58,7 @@ return {
         ---@diagnostic disable-next-line: assign-type-mismatch
         illuminate = {
           enabled = true,
-          lsp = true,
+          lsp = false,
         },
       },
     },
