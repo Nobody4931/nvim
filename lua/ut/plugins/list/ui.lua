@@ -315,6 +315,9 @@ return {
           'branch',
           icon = '',
           color = { fg = active and colors.pink or inactive_fg },
+          cond = function()
+            return true -- bc for some reason it doesnt show when inactive
+          end,
           padding = {
             right = 1,
           },
