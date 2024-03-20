@@ -104,14 +104,10 @@ return {
       -- Language servers configurations
       local lspconfig = require('lspconfig')
 
-      local lsp_signature = require('lsp_signature')
       local cmp_nvim_lsp = require('cmp_nvim_lsp')
-
       local capabilities = cmp_nvim_lsp.default_capabilities()
 
       local function on_attach(client, bufnr)
-        lsp_signature.on_attach(client, bufnr)
-
         -- Disable semantic token highlighting
         -- client.server_capabilities["semanticTokensProvider"] = nil
 
