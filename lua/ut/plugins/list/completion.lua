@@ -18,6 +18,7 @@ return {
       local cmp = require('cmp')
       local luasnip = require('luasnip')
 
+      -- TODO: Make completion options look nicer
       return {
         core = {
           snippet = {
