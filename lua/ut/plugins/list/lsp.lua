@@ -111,17 +111,15 @@ return {
 
       -- Options passed to `lspconfig[server].setup()`
       servers = {
-        lua_ls = {
-          settings = {
-            Lua = {
-              workspace = {
-                checkThirdParty = false,
-              },
-            },
-          },
-        },
-
-        -- TODO: Set up language servers... lol.
+        lua_ls = {},
+        tsserver = {},
+        eslint = {},
+        jsonls = {},
+        html = {},
+        cssls = {},
+        clangd = {},
+        pyright = {},
+        rust_analyzer = {},
       },
     },
 
