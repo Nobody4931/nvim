@@ -1,3 +1,7 @@
+local spec_neodev = require('ut.plugins.list.lsp.neodev')
+local spec_fidget = require('ut.plugins.list.lsp.fidget')
+local spec_lsp_signature = require('ut.plugins.list.lsp.lsp_signature')
+
 ---@type LazySpec[]
 return {
   -- Package manager for Neovim that can automatically install LSP servers, linters, formatters, etc.
@@ -10,23 +14,46 @@ return {
     cmd = 'Mason',
 
     opts = {
-      max_concurrent_installers = math.floor(math.max(2, vim.loop.available_parallelism() / 3)),
+      -- Options passed to `mason.setup()`
+      mason = {
+        max_concurrent_installers = math.floor(math.max(2, vim.loop.available_parallelism() / 3)),
 
-      ui = {
-        border = 'none',
-        width = 0.8,
-        height = 0.8,
+        ui = {
+          border = 'none',
+          width = 0.8,
+          height = 0.8,
 
-        icons = {
-          package_installed = '',
-          package_pending = '',
-          package_uninstalled = '',
+          icons = {
+            package_installed = '',
+            package_pending = '',
+            package_uninstalled = '',
+          },
         },
+      },
+
+      -- Options passed to custom ensure_installed handler
+      ensure_installed = {
+        'lua-language-server',
+        'stylua',
       },
     },
 
     config = function(_, opts)
-      require('mason').setup(opts)
+      require('mason').setup(opts.mason)
+
+      -- Custom ensure_installed handler
+      local mason_registry = require('mason-registry')
+      for _, package_name in ipairs(opts.ensure_installed) do
+        local package = mason_registry.get_package(package_name)
+        if not package:is_installed() then
+          vim.notify(string.format("Installing '%s'...", package_name), vim.log.levels.INFO)
+          local install_hndl = package:install()
+
+          install_hndl:once('closed', function()
+            vim.notify(string.format("Successfully installed '%s'", package_name), vim.log.levels.INFO)
+          end)
+        end
+      end
     end,
   },
 
@@ -36,14 +63,12 @@ return {
 
     dependencies = {
       'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
-
-      'folke/neodev.nvim',
 
       'hrsh7th/cmp-nvim-lsp',
-      'ray-x/lsp_signature.nvim',
 
-      'j-hui/fidget.nvim',
+      spec_neodev,
+      spec_fidget,
+      spec_lsp_signature,
     },
 
     event = 'BufReadPost',
@@ -78,7 +103,6 @@ return {
 
       -- Language servers configurations
       local lspconfig = require('lspconfig')
-      local mason_lspconfig = require('mason-lspconfig')
 
       local lsp_signature = require('lsp_signature')
       local cmp_nvim_lsp = require('cmp_nvim_lsp')
@@ -152,22 +176,13 @@ return {
         end, map_opt)
       end
 
-      local ensure_installed = {}
-      for server in pairs(opts.servers) do
-        table.insert(ensure_installed, server)
+      for server_name, server_opts in pairs(opts.servers) do
+        server_opts.root_dir = vim.loop.cwd
+        server_opts.on_attach = on_attach
+        server_opts.capabilities = capabilities
+
+        lspconfig[server_name].setup(server_opts)
       end
-
-      mason_lspconfig.setup({ ensure_installed = ensure_installed })
-      mason_lspconfig.setup_handlers({
-        function(server_name)
-          local server_opts = opts.servers[server_name]
-          server_opts.root_dir = vim.loop.cwd
-          server_opts.on_attach = on_attach
-          server_opts.capabilities = capabilities
-
-          lspconfig[server_name].setup(server_opts)
-        end,
-      })
     end,
   },
 
@@ -183,7 +198,7 @@ return {
     event = 'BufReadPost',
 
     config = function()
-      local null_ls = require('null-ls')
+      local null_ls = require('null-ls') -- none-ls.nvim uses the same api as null-ls.nvim
 
       local format_on_save = vim.api.nvim_create_augroup('format_on_save', { clear = true })
 
@@ -212,67 +227,6 @@ return {
           end
         end,
       })
-    end,
-  },
-
-  -- Automatic Lua language server setup for Neovim's Lua API
-  {
-    'folke/neodev.nvim',
-
-    opts = {
-      setup_jsonls = false,
-    },
-
-    config = function(_, opts)
-      require('neodev').setup(opts)
-    end,
-  },
-
-  -- Shows function signatures while typing
-  {
-    'ray-x/lsp_signature.nvim',
-
-    -- TODO: Figure out why there's no separating line between the
-    -- function signature and the documentation
-    opts = {
-      handler_opts = {
-        border = 'none',
-      },
-
-      doc_lines = 100,
-      max_height = 25,
-      max_width = 120,
-
-      close_timeout = 500,
-
-      hint_enable = false,
-    },
-
-    config = function(_, opts)
-      require('lsp_signature').setup(opts)
-    end,
-  },
-
-  -- Shows loading progress for LSP servers
-  {
-    'j-hui/fidget.nvim',
-
-    opts = {
-      progress = {
-        display = {
-          done_icon = '',
-        },
-      },
-
-      notification = {
-        window = {
-          winblend = 0,
-        },
-      },
-    },
-
-    config = function(_, opts)
-      require('fidget').setup(opts)
     end,
   },
 }
