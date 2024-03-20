@@ -60,11 +60,23 @@ return {
       for _, package_name in ipairs(opts.ensure_installed) do
         local package = mason_registry.get_package(package_name)
         if not package:is_installed() then
-          vim.notify(string.format("Installing '%s'...", package_name), vim.log.levels.INFO)
+          vim.notify(string.format("Installing '%s'...", package_name), vim.log.levels.INFO, { title = 'mason.nvim' })
           local install_hndl = package:install()
 
           install_hndl:once('closed', function()
-            vim.notify(string.format("Successfully installed '%s'", package_name), vim.log.levels.INFO)
+            if package:is_installed() then
+              vim.notify(
+                string.format("Successfully installed '%s'", package_name),
+                vim.log.levels.INFO,
+                { title = 'mason.nvim' }
+              )
+            else
+              vim.notify(
+                string.format("Failed to install '%s'", package_name),
+                vim.log.levels.ERROR,
+                { title = 'mason.nvim' }
+              )
+            end
           end)
         end
       end
