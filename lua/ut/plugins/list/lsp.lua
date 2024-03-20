@@ -34,7 +34,21 @@ return {
       -- Options passed to custom ensure_installed handler
       ensure_installed = {
         'lua-language-server',
+        'typescript-language-server',
+        'eslint-lsp',
+        'json-lsp',
+        'html-lsp',
+        'css-lsp',
+        'clangd',
+        'pyright',
+        'rust-analyzer',
+
         'stylua',
+        'prettierd',
+        'clang-format',
+        'black',
+
+        'editorconfig-checker',
       },
     },
 
@@ -223,6 +237,11 @@ return {
       null_ls.setup({
         sources = {
           null_ls.builtins.formatting.stylua,
+          null_ls.builtins.formatting.prettierd,
+          null_ls.builtins.formatting.clang_format,
+          null_ls.builtins.formatting.black,
+
+          null_ls.builtins.diagnostics.editorconfig_checker,
         },
 
         on_attach = function(client, bufnr)
