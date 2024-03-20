@@ -33,6 +33,7 @@ return {
 
       -- Options passed to custom ensure_installed handler
       ensure_installed = {
+        -- Language servers
         'lua-language-server',
         'typescript-language-server',
         'eslint-lsp',
@@ -43,11 +44,13 @@ return {
         'pyright',
         'rust-analyzer',
 
+        -- Formatters
         'stylua',
         'prettierd',
         'clang-format',
         'black',
 
+        -- Linters
         'editorconfig-checker',
       },
     },
