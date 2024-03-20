@@ -1,4 +1,4 @@
----@type LazySpec[]
+---@type LazyPluginSpec[]
 return {
   -- Treesitter abstraction layer and configuration tool
   {
@@ -17,18 +17,13 @@ return {
       ensure_installed = {
         'comment',
         'diff',
-        'git_config',
-        'git_rebase',
-        'gitattributes',
-        'gitcommit',
-        'gitignore',
+        'query',
+        'regex',
+
         'lua',
         'luap',
         'luadoc',
-        'markdown',
-        'markdown_inline',
-        'query',
-        'regex',
+
         'vim',
         'vimdoc',
       },

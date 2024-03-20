@@ -1,4 +1,4 @@
----@type LazySpec[]
+---@type LazyPluginSpec[]
 return {
   {
     'catppuccin/nvim',
@@ -25,8 +25,12 @@ return {
           LazyNormal = { bg = colors.mantle },
           MasonNormal = { bg = colors.mantle },
 
+          -- TODO: Make lspconfig.nvim and null-ls.nvim floating menus opaque
+
           -- Make completion menu opaque
           Pmenu = { bg = colors.base },
+
+          -- TODO: Make hover menu opaque
         }
       end,
 

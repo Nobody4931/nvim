@@ -1,4 +1,4 @@
----@type LazySpec[]
+---@type LazyPluginSpec[]
 return {
   -- Better vim.notify()
   {
@@ -152,9 +152,17 @@ return {
               ['n'] = colors.blue,
               ['no'] = colors.blue,
 
+              -- Operator pending modes
+              ['r'] = colors.blue,
+              ['rm'] = colors.blue,
+              ['r?'] = colors.blue,
+
               -- Insert mode
               ['i'] = colors.green,
               ['ic'] = colors.green,
+
+              -- Terminal mode
+              ['t'] = colors.green,
 
               -- Visual mode
               ['v'] = colors.mauve,
@@ -165,22 +173,14 @@ return {
               ['c'] = colors.teal,
               ['cv'] = colors.teal,
 
-              -- Terminal mode
-              ['t'] = colors.green,
+              -- Replace mode
+              ['R'] = colors.red,
+              ['Rv'] = colors.red,
 
               -- Select mode
               ['s'] = colors.peach,
               ['S'] = colors.peach,
               [''] = colors.peach,
-
-              -- Replace mode
-              ['R'] = colors.red,
-              ['Rv'] = colors.red,
-
-              -- Pending input modes
-              ['r'] = colors.blue,
-              ['rm'] = colors.blue,
-              ['r?'] = colors.blue,
             }
 
             return { fg = active and mode_colors[vim.fn.mode()] or inactive_fg }
