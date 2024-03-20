@@ -120,6 +120,8 @@ return {
             },
           },
         },
+
+        -- TODO: Set up language servers... lol.
       },
     },
 
