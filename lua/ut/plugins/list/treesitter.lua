@@ -1,4 +1,4 @@
----@type LazySpec[]
+---@type LazyPluginSpec[]
 return {
   -- Treesitter abstraction layer and configuration tool
   {

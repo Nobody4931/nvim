@@ -1,4 +1,4 @@
----@type LazySpec[]
+---@type LazyPluginSpec[]
 return {
   -- Dired-like file explorer that allows the file system to be edited like a regular buffer
   {

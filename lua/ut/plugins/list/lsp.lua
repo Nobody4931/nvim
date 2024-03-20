@@ -2,7 +2,7 @@ local spec_neodev = require('ut.plugins.list.lsp.neodev')
 local spec_fidget = require('ut.plugins.list.lsp.fidget')
 local spec_lsp_signature = require('ut.plugins.list.lsp.lsp_signature')
 
----@type LazySpec[]
+---@type LazyPluginSpec[]
 return {
   -- Package manager for Neovim that can automatically install LSP servers, linters, formatters, etc.
   {
