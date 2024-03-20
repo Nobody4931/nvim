@@ -119,28 +119,42 @@ return {
         local map = vim.keymap.set
         local map_opt = { buffer = bufnr }
 
-        -- Hover mappings
+        -- Hover event
         map('n', 'K', vim.lsp.buf.hover, map_opt)
-        map('n', '<leader>k', vim.lsp.buf.signature_help, map_opt)
 
-        -- Goto symbols mappings
+        -- Goto references
         map('n', '<leader>lr', function()
           require('telescope.builtin').lsp_references(require('telescope.themes').get_dropdown())
         end, map_opt)
+
+        -- Goto definition
+        map('n', 'gd', function()
+          require('telescope.builtin').lsp_definitions(require('telescope.themes').get_dropdown())
+        end, map_opt)
+
         map('n', '<leader>ld', function()
           require('telescope.builtin').lsp_definitions(require('telescope.themes').get_dropdown())
         end, map_opt)
+
+        -- Goto declaration
         map('n', '<leader>lD', vim.lsp.buf.declaration, map_opt) -- lol
+
+        -- Goto implementations
         map('n', '<leader>li', function()
           require('telescope.builtin').lsp_implementations(require('telescope.themes').get_dropdown())
         end, map_opt)
+
+        -- Goto type definition
         map('n', '<leader>lt', function()
           require('telescope.builtin').lsp_type_definitions(require('telescope.themes').get_dropdown())
         end, map_opt)
+
+        -- Search document symbols
         map('n', '<leader>ls', function()
           require('telescope.builtin').lsp_document_symbols()
         end, map_opt)
 
+        -- Search workspace symbols
         map('n', '<leader>lw', function()
           vim.ui.input({ prompt = 'Find Symbol: ' }, function(input)
             if input then
@@ -148,29 +162,37 @@ return {
             end
           end)
         end, map_opt)
+
         map('n', '<leader>lW', function()
           require('telescope.builtin').lsp_dynamic_workspace_symbols()
         end, map_opt)
 
-        -- Code actions mappings
+        -- Rename variable
         map('n', '<leader>ln', vim.lsp.buf.rename, map_opt)
+
+        -- Perform code action
         map('n', '<leader>lc', vim.lsp.buf.code_action, map_opt)
 
-        -- Goto diagnostics mappings
+        -- Show diagnostics
         map('n', '<leader>lg', vim.diagnostic.open_float, map_opt)
+
         map('n', '<leader>lG', function()
           require('telescope.builtin').diagnostics()
         end, map_opt)
 
+        -- Goto diagnostics
         map('n', ']d', function()
           vim.diagnostic.goto_next()
         end, map_opt)
+
         map('n', '[d', function()
           vim.diagnostic.goto_prev()
         end, map_opt)
+
         map('n', ']D', function()
           vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
         end, map_opt)
+
         map('n', '[D', function()
           vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })
         end, map_opt)
