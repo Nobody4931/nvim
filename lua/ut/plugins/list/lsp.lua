@@ -171,6 +171,50 @@ return {
     end,
   },
 
+  -- Interface for setting up LSP sources (eg. linters and formatters) through pure Lua
+  {
+    'nvimtools/none-ls.nvim',
+
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'williamboman/mason.nvim',
+    },
+
+    event = 'BufReadPost',
+
+    config = function()
+      local null_ls = require('null-ls')
+
+      local format_on_save = vim.api.nvim_create_augroup('format_on_save', { clear = true })
+
+      null_ls.setup({
+        sources = {
+          null_ls.builtins.formatting.stylua,
+        },
+
+        on_attach = function(client, bufnr)
+          if client.supports_method('textDocument/formatting') then
+            vim.api.nvim_clear_autocmds({ group = format_on_save, buffer = bufnr })
+            vim.api.nvim_create_autocmd('BufWritePre', {
+              group = format_on_save,
+              buffer = bufnr,
+              callback = function()
+                vim.lsp.buf.format({
+                  async = false,
+                  bufnr = bufnr,
+                  -- Send formatting request to null-ls only to reduce lag and incorrect formatting from alternate sources
+                  filter = function(fmt_client)
+                    return fmt_client.name == 'null-ls'
+                  end,
+                })
+              end,
+            })
+          end
+        end,
+      })
+    end,
+  },
+
   -- Automatic Lua language server setup for Neovim's Lua API
   {
     'folke/neodev.nvim',
