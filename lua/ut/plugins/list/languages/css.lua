@@ -21,16 +21,4 @@ return {
       },
     },
   },
-
-  -- Add css formatters to conform
-  {
-    'stevearc/conform.nvim',
-
-    opts = {
-      formatters_by_ft = {
-        css = { 'prettierd' },
-        scss = { 'prettierd' },
-      },
-    },
-  },
 }

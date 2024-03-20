@@ -21,21 +21,4 @@ return {
       },
     },
   },
-
-  -- TODO Add rust linters (clippy) to nvim-lint (currently unsupported)
-
-  -- Add rust formatters to conform
-  {
-    'stevearc/conform.nvim',
-
-    opts = {
-      formatters_by_ft = {
-        rust = { 'rustfmt' },
-      },
-
-      ignore_install = {
-        rustfmt = true, -- NOTE: rustfmt should be installed through rustup (`rustup component add rustfmt`)
-      },
-    },
-  },
 }

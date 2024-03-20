@@ -21,31 +21,4 @@ return {
       },
     },
   },
-
-  -- Add c/cpp linters to nvim-lint
-  {
-    'mfussenegger/nvim-lint',
-
-    opts = {
-      linters_by_ft = {
-        c = { 'cpplint' },
-        cpp = { 'cpplint' },
-      },
-    },
-  },
-
-  -- Add c/cpp formatters to conform
-  {
-    'stevearc/conform.nvim',
-
-    opts = {
-      formatters_by_ft = {
-        c = { 'clang_format' },
-        cpp = { 'clang_format' },
-      },
-      formatter_install_names = {
-        clang_format = 'clang-format',
-      },
-    },
-  },
 }

@@ -21,26 +21,4 @@ return {
       },
     },
   },
-
-  -- Add python linters to nvim-lint
-  {
-    'mfussenegger/nvim-lint',
-
-    opts = {
-      linters_by_ft = {
-        python = { 'ruff' },
-      },
-    },
-  },
-
-  -- Add python formatters to conform
-  {
-    'stevearc/conform.nvim',
-
-    opts = {
-      formatters_by_ft = {
-        python = { 'ruff' },
-      },
-    },
-  },
 }
