@@ -65,13 +65,13 @@ return {
             {
               name = 'buffer',
               option = {
-                -- Provide completion from all visible buffers (with size < 2 MiB)
+                -- Provide completion from all visible buffers (with size < 10 MiB)
                 get_bufnrs = function()
                   local tab_wins = vim.api.nvim_tabpage_list_wins(0)
                   local tab_bufs = vim.tbl_map(vim.api.nvim_win_get_buf, tab_wins)
                   return vim.tbl_filter(function(bufnr)
                     local bytes = vim.api.nvim_buf_get_offset(bufnr, vim.api.nvim_buf_line_count(bufnr))
-                    return bytes < 1024 * 1024 * 2
+                    return bytes < 1024 * 1024 * 10
                   end, tab_bufs)
                 end,
               },
