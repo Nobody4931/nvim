@@ -27,10 +27,6 @@ return {
             end,
           },
 
-          completion = {
-            keyword_length = 1,
-          },
-
           mapping = {
             ['<C-n>'] = cmp.mapping(function()
               if cmp.visible() then
