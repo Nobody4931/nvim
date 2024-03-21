@@ -227,7 +227,7 @@ return {
           colored = active,
           icon_only = true,
           padding = {
-            right = 1,
+            right = 0,
           },
         }
       end)
