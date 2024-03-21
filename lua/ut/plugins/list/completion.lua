@@ -10,6 +10,7 @@ return {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-buffer',
+      'onsails/lspkind.nvim',
     },
 
     event = { 'InsertEnter', 'CmdlineEnter' },
@@ -18,7 +19,43 @@ return {
       local cmp = require('cmp')
       local luasnip = require('luasnip')
 
-      -- TODO: Make completion options look nicer
+      local lspkind = require('lspkind')
+      local lspkind_formatter = lspkind.cmp_format({
+        mode = 'symbol_text',
+        menu = {
+          nvim_lsp = 'LSP',
+          path = 'Path',
+          buffer = 'Buffer',
+        },
+        symbol_map = {
+          Text = '',
+          Method = '',
+          Function = '',
+          Constructor = '',
+          Field = '',
+          Variable = '',
+          Class = '',
+          Interface = '',
+          Module = '',
+          Property = '',
+          Unit = '',
+          Value = '',
+          Enum = '',
+          Keyword = '',
+          Snippet = '',
+          Color = '',
+          File = '',
+          Reference = '',
+          Folder = '',
+          EnumMember = '',
+          Constant = '',
+          Struct = '',
+          Event = '',
+          Operator = '',
+          TypeParameter = '',
+        },
+      })
+
       return {
         core = {
           snippet = {
@@ -76,6 +113,26 @@ return {
 
           experimental = {
             ghost_text = true,
+          },
+
+          formatting = {
+            fields = { 'kind', 'abbr', 'menu' },
+            format = function(entry, vim_item)
+              local kind = lspkind_formatter(entry, vim_item)
+              local symbol_text = vim.split(kind.kind, '%s')
+              local symbol = symbol_text[1]
+              local text = symbol_text[2]
+
+              kind.kind = symbol
+              kind.menu = text
+              return kind
+            end,
+          },
+
+          window = {
+            completion = {
+              col_offset = -2,
+            },
           },
         },
 
