@@ -43,6 +43,7 @@ return {
         'clangd',
         'pyright',
         'rust-analyzer',
+        'zls',
 
         -- Formatters
         'stylua',
@@ -120,6 +121,7 @@ return {
         clangd = {},
         pyright = {},
         rust_analyzer = {},
+        zls = {},
       },
     },
 
