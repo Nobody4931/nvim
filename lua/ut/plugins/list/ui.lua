@@ -281,7 +281,9 @@ return {
           colored = active,
           sources = { 'nvim_diagnostic' },
           symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
-          padding = 0,
+          padding = {
+            left = 1,
+          },
         }
       end)
 
